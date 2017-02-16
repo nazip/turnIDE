@@ -1,0 +1,9 @@
+@import './node_modules/foundation-sites/scss/foundation';
+@include foundation-everything;
+
+.metadata {
+  border: 1px double black;
+}
+.img {
+  display: block;
+}
