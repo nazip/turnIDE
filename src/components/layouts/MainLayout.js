@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import { Icon, Segment, Container, Label } from 'semantic-ui-react';
+import Link from 'components/elements/Link';
 
 const MainLayout = ({ children }) => (
   <Container>
@@ -15,7 +16,10 @@ MainLayout.propTypes = {
 
 const Logo = () => (
   <Segment>
-    <Label><Icon name='user'/>My first React blog</Label>
+    <Link to={'/'}>
+      <Label><Icon name='user'/>My first React blog</Label>
+    </Link>
+    <Link to={'/about'}>About</Link>
   </Segment>
 );
 

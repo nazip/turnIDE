@@ -1,10 +1,8 @@
 import React, {PropTypes} from 'react';
-import BlogList from '../ui/blogList';
-import PieChart from '../ui/pieChart';
+import BlogList from 'components/ui/BlogList';
+import PieChart from 'components/ui/PieChart';
 import request from 'superagent';
-import url from '../const/staticData';
-import { Segment, Label } from 'semantic-ui-react';
-import Link from '../elements/link';
+import url from 'components/const/StaticData';
 
 class BlogPage extends React.Component {
   constructor(props) {
@@ -20,15 +18,15 @@ class BlogPage extends React.Component {
   }
 
   likeClick(id) {
-    const newItem = this.state.items.map((item) => (
+    const item = this.state.items.map((item) => (
       item.map((item) => {
         if (item.id !== id) return item;
-        const m = item;
-        m.metadata.like = m.metadata.like + 1;
+        const m = Object.assign({}, item);
+        m.metadata.like += 1;
         return m;
       })
     ));
-    this.setState({items: newItem});
+    this.setState({items: item});
   }
 
   dataForChart() {
@@ -42,12 +40,9 @@ class BlogPage extends React.Component {
 
   render() {
     return this.state.items == null ? <div/> : <div>
-            <Segment>
-              <Link to={'/'}>My Post</Link>
-              <Link to={'/about'}><Label>About</Label></Link>
-            </Segment>
             {this.state.items.map((item, key) => (
-                <BlogList item={item} key={key} likeHandler={(id) => this.likeClick(id)}/>))
+                <BlogList items={item}
+                key={key} likeHandler={(id) => this.likeClick(id)}/>))
             }
             <PieChart typeChart={'pie'} items={this.dataForChart()}/>
            </div>;
