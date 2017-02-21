@@ -1,9 +1,9 @@
 import React, {PropTypes} from 'react';
-import TextBox from './ui/textBox';
+import TextBox from './ui/TextBox';
 import request from 'superagent';
-import ToHome from './ui/toHome';
-import url from './const/staticData';
-import BlogItem from './ui/blogItem';
+import ToHome from './ui/ToHome';
+import url from './const/StaticData';
+import BlogItem from './ui/BlogItem';
 
 class Post extends React.Component {
   constructor(props) {
@@ -22,7 +22,7 @@ class Post extends React.Component {
     if (this.state.item !== null) {
       return <div>
               <ToHome/>
-              <BlogItem item={this.state.item[0]} likeHandler={() => ('')} />
+              <BlogItem item={this.state.item[0]}/>
             </div>;
     }
     return <TextBox txt={'Item not found'}/>;

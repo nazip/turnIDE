@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, Icon } from 'semantic-ui-react';
-import Link from '../elements/link';
+import Link from 'components/elements/Link';
 
 const ToHome = () => (
   <Link to={'/'}>

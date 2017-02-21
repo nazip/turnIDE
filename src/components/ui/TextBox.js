@@ -1,12 +1,12 @@
 import React, { PropTypes } from 'react';
 import { Label } from 'semantic-ui-react';
 
-const TextBox = ({txt = ''}) => (
-  <Label basic content={txt}/>
+const TextBox = ({children = ''}) => (
+  <Label basic>{children}</Label>
 );
 
 TextBox.propTypes = {
-  txt: PropTypes.string
+  children: PropTypes.string
 };
 
 export default TextBox;

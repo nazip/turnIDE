@@ -3,7 +3,7 @@ import './node_modules/semantic-ui/dist/semantic.min.css';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './src/components/app';
+import App from './src/components/App';
 
 import { AppContainer } from 'react-hot-loader';
 
@@ -17,8 +17,8 @@ ReactDOM.render(
 );
 
 if (module.hot) {
-  module.hot.accept('./src/components/app', () => {
-    const NextApp = require('./src/components/app').default;
+  module.hot.accept('./src/components/App', () => {
+    const NextApp = require('./src/components/App').default;
     ReactDOM.render(
       <AppContainer>
         <NextApp/>
