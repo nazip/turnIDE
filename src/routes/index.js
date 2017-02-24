@@ -1,4 +1,4 @@
-import Blog from './Blog';
+import Blog from 'routes/Blog';
 
 export default {
   childRoutes: [Blog]

@@ -7,7 +7,7 @@ import url from 'components/const/StaticData';
 class BlogPage extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {items: null};
+    this.state = {items: null, latitude: null, longitude: null};
   }
 
   componentDidMount() {
@@ -18,7 +18,7 @@ class BlogPage extends React.Component {
   }
 
   likeClick(id) {
-    const item = this.state.items.map((item) => (
+    const newItems = this.state.items.map((item) => (
       item.map((item) => {
         if (item.id !== id) return item;
         const m = Object.assign({}, item);
@@ -26,7 +26,7 @@ class BlogPage extends React.Component {
         return m;
       })
     ));
-    this.setState({items: item});
+    this.setState({items: newItems});
   }
 
   dataForChart() {
