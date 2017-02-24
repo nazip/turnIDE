@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react';
 import { Menu, Button, Label } from 'semantic-ui-react';
 
-const PeginationItems = ({items, activePage, itemsPerPage,
+const Pegination = ({items, activePage, itemsPerPage,
       changeActivePage, changeItemsPerPage}) => (
   <div>
       <Menu pagination>
@@ -19,7 +19,7 @@ const PeginationItems = ({items, activePage, itemsPerPage,
   </div>
 );
 
-PeginationItems.propTypes = {
+Pegination.propTypes = {
   items: PropTypes.arrayOf(PropTypes.number),
   activePage: PropTypes.number,
   itemsPerPage: PropTypes.number,
@@ -27,4 +27,4 @@ PeginationItems.propTypes = {
   changeItemsPerPage: PropTypes.func
 };
 
-export default PeginationItems;
+export default Pegination;

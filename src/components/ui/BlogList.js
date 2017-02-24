@@ -1,6 +1,6 @@
 import React, {PropTypes} from 'react';
 import BlogItem from 'components/ui/BlogItem';
-import Pagination from 'components/ui/PaginationItems';
+import Pagination from 'components/elements/Pagination';
 
 class BlogList extends React.Component {
   constructor(props) {

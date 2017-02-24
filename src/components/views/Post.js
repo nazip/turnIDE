@@ -1,9 +1,9 @@
 import React, {PropTypes} from 'react';
-import TextBox from './ui/TextBox';
+import TextBox from 'components/elements/TextBox';
 import request from 'superagent';
-import ToHome from './ui/ToHome';
-import url from './const/StaticData';
-import BlogItem from './ui/BlogItem';
+import ToHome from 'components/ui/ToHome';
+import url from 'components/const/StaticData';
+import BlogItem from 'components/ui/BlogItem';
 
 class Post extends React.Component {
   constructor(props) {

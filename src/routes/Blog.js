@@ -1,5 +1,5 @@
 import BlogPage from 'components/containers/BlogPage';
-import Post from 'components/Post';
+import Post from 'components/views/Post';
 import About from 'components/ui/About';
 import MainLayout from 'components/layouts/MainLayout';
 import { postsPath } from 'helpers/routes';

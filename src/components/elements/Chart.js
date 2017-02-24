@@ -1,7 +1,7 @@
 import React, {Component, PropTypes}  from 'react';
 import c3 from 'c3';
 
-class PieChart extends Component {
+class Chart extends Component {
 
   componentDidMount() {
     this.chart = c3.generate({
@@ -27,9 +27,9 @@ class PieChart extends Component {
   }
 }
 
-PieChart.propTypes = {
+Chart.propTypes = {
   items: PropTypes.array,
   typeChart: PropTypes.string
 };
 
-export default PieChart;
+export default Chart;
