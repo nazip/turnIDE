@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import TextBox from 'components/ui/TextBox';
+import TextBox from 'components/elements/TextBox';
 import { Label } from 'semantic-ui-react';
 
 const MetaData = ({metadata}) => {

@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react';
-import Img from './Img';
-import Like from './Like';
-import MetaData from './MetaData';
+import Img from 'components/elements/Img';
+import Like from 'components/ui/Like';
+import MetaData from 'components/ui/MetaData';
 import { Header, Grid, Divider} from 'semantic-ui-react';
 import Link from 'components/elements/Link';
 import { postsPath } from 'helpers/routes';
