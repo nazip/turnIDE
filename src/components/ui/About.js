@@ -1,6 +1,6 @@
 import React from 'react';
-import ToHome from './ToHome';
-import TextBox from './TextBox';
+import ToHome from 'components/ui/ToHome';
+import TextBox from 'components/ui/TextBox';
 
 const About = () => (
   <div>
