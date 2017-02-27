@@ -1,0 +1,20 @@
+import React, { PropTypes } from 'react';
+import { Button} from 'semantic-ui-react';
+
+const Like = ({like, likeHandler}) => (
+  <Button
+    content='Like'
+    icon='heart'
+    label={{ as: 'a', basic: true, content: like }}
+    labelPosition='right'
+    onClick={likeHandler}
+  />
+);
+
+Like.defaultProps = { like: 0 };
+Like.propTypes = {
+  like: PropTypes.number,
+  likeHandler: PropTypes.func
+};
+
+export default Like;
