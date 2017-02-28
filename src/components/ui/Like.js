@@ -5,7 +5,7 @@ const Like = ({like, likeHandler}) => (
   <Button
     content='Like'
     icon='heart'
-    label={{ as: 'a', basic: true, content: like }}
+    label={{ as: 'a', basic: true, content: like || 0 }}
     labelPosition='right'
     onClick={likeHandler}
   />
