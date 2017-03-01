@@ -3,10 +3,12 @@ import Post from 'components/views/Post';
 import About from 'components/ui/About';
 import MainLayout from 'components/layouts/MainLayout';
 import { postsPath } from 'helpers/routes';
+import { fetchPosts } from 'components/actions/Posts';
 
 const Index = {
   path: '/',
-  component: BlogPage
+  component: BlogPage,
+  prepareData: (store) => (store.dispatch(fetchPosts()))
 };
 
 const BlogsItem = {
