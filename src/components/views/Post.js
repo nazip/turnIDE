@@ -19,10 +19,12 @@ class Post extends React.Component {
   }
 
   render() {
+    console.log('props = ', this.props);
     if (this.state.item !== null) {
       return <div>
               <ToHome/>
-              <BlogItem item={this.state.item[0]}/>
+              <BlogItem item={this.state.item[0]}
+                        likeHandler={(id) => this.props.like(id)}/>
             </div>;
     }
     return <TextBox txt={'Item not found'}/>;
@@ -30,6 +32,7 @@ class Post extends React.Component {
 }
 
 Post.propTypes = {
-  params: PropTypes.object
+  params: PropTypes.object,
+  like: PropTypes.func
 };
 export default Post;
