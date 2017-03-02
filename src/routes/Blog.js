@@ -1,19 +1,27 @@
-import BlogPage from 'components/containers/BlogPage';
-import Post from 'components/views/Post';
+// import BlogPage from 'components/containers/BlogPage';
+// import Post from 'components/views/Post';
 import About from 'components/ui/About';
 import MainLayout from 'components/layouts/MainLayout';
 import { postsPath } from 'helpers/routes';
 import { fetchPosts } from 'components/actions/Posts';
+import { fetchPost } from 'components/actions/Post';
+import PostsContainer from 'containers/PostsContainer';
+import PostContainer from 'containers/PostContainer';
 
 const Index = {
   path: '/',
-  component: BlogPage,
-  prepareData: (store) => (store.dispatch(fetchPosts()))
+  component: PostsContainer,
+  prepareData: (store) => {
+    store.dispatch(fetchPosts());
+  }
 };
 
 const BlogsItem = {
   path: postsPath(),
-  component: Post
+  component: PostContainer,
+  prepareData: (store, query, params) => {
+    store.dispatch(fetchPost(params.id));
+  }
 };
 
 const AboutBlog = {

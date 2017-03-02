@@ -35,6 +35,7 @@ class BlogList extends React.Component {
     const showItems = items.slice(
        activePage * itemsPerPage - itemsPerPage,
        activePage * itemsPerPage);
+
     return <div>
             {showItems.map((item) =>
               <BlogItem key={item.id} item={item} likeHandler={likeHandler} />

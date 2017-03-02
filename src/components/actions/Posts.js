@@ -18,7 +18,6 @@ const requestSuccess = (response) => ({
 export function fetchPosts() {
   return (dispatch) => {
     dispatch(requestPosts());
-
     return request
             .get(url)
             .end((err, response) => {

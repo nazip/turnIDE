@@ -8,7 +8,6 @@ import { postsPath } from 'helpers/routes';
 
 const BlogItem = ({item, likeHandler}) => {
   const {image, metadata, id, txt} = item;
-
   return  <Grid columns={2} divided>
               <Grid.Row>
                 <Grid.Column>

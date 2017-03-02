@@ -7,7 +7,8 @@ import url from 'components/const/StaticData';
 class BlogPage extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {items: null, latitude: null, longitude: null};
+    this.state = {items: null};
+    this.postLike = this.postLike.bind(this);
   }
 
   componentDidMount() {
@@ -17,16 +18,26 @@ class BlogPage extends React.Component {
     );
   }
 
+  postLike(id, like) {
+    request.put(`${url}/post`)
+    .set('Content-Type', 'application/json')
+    .accept('application/json')
+    .send(`{"id":${id},"like":${like}}`)
+    .end(null);
+  }
+
   likeClick(id) {
     const items = this.state.items.map((item) => (
       item.map((item) => {
         if (item.id !== id) return item;
         const m = Object.assign({}, item);
         m.metadata.like += 1;
+        this.postLike(m.id, m.metadata.like);
         return m;
       })
     ));
     this.setState({items});
+    // this.props.dispatch({type: POST_INC_LIKE, id});
   }
 
   dataForChart() {
@@ -39,6 +50,8 @@ class BlogPage extends React.Component {
   }
 
   render() {
+    console.log('props(BlogPage)  = ', this.props);
+
     return this.state.items == null ? <div/> : <div>
             {this.state.items.map((item, key) => (
                 <BlogList items={item}
