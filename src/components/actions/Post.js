@@ -28,24 +28,3 @@ export function fetchPost(id) {
             });
   };
 }
-
-const likePlus = (entries) => ({
-  type: types.POST_INC_LIKE,
-  entries
-});
-
-export function incLike(id, items) {
-  return (dispatch) => {
-    const items = items.map((item) => (
-      item.map((item) => {
-        if (item.id !== id) return item;
-        const m = Object.assign({}, item);
-        m.metadata.like += 1;
-        this.postLike(m.id, m.metadata.like);
-        return m;
-      })
-    ));
-    this.setState({items});
-    dispatch(likePlus(items));
-  };
-}
