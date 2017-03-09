@@ -1,25 +1,28 @@
-import * as types from '../const/actionTypes/Posts';
+import * as types from '../const/actionTypes/Post';
 import request from 'superagent';
 import url from 'components/const/StaticData';
-import store from 'components/store';
+import store from 'components/redux/store';
 
-const requestPosts = () => ({
-  type: types.POSTS_FETCH_REQUEST
+const requestPost = (id) => ({
+  type: types.POST_FETCH_REQUEST,
+  id
 });
 
 const requestError = () => ({
-  type: types.POSTS_FETCH_ERROR
+  type: types.POST_FETCH_ERROR
 });
+
 const requestSuccess = (response) => ({
-  type: types.POSTS_FETCH_SUCCESS,
+  type: types.POST_FETCH_SUCCESS,
   response
 });
 
-export function fetchPosts() {
+export function fetchPost(id) {
   return (dispatch) => {
-    dispatch(requestPosts());
+    dispatch(requestPost(id));
+
     return request
-            .get(url)
+            .get(`${url}/post/${id}.json`)
             .end((err, response) => {
               err ? dispatch(requestError())
                   : dispatch(requestSuccess(response.body));
@@ -27,9 +30,9 @@ export function fetchPosts() {
   };
 }
 
-const likePlus = (items) => ({
+const likePlus = (item) => ({
   type: types.POST_INC_LIKE,
-  items
+  item
 });
 
 const postLike = (id, like) =>  (
@@ -40,15 +43,11 @@ const postLike = (id, like) =>  (
   .end(null)
 );
 
-export function incLike(id) {
+export function incLike() {
   return (dispatch) => {
-    const items = store.getState().posts.entries.map((item) => {
-      if (item.id !== id) return item;
-      const m = Object.assign({}, item);
-      m.metadata.like += 1;
-      postLike(m.id, m.metadata.like);
-      return m;
-    });
-    dispatch(likePlus(items));
+    const item = Object.assign({}, store.getState().post.entry);
+    item.metadata.like += 1;
+    postLike(item.id, item.metadata.like);
+    dispatch(likePlus(item));
   };
 }

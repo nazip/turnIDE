@@ -3,7 +3,7 @@ import  ReactDOM from 'react-dom';
 import routes from 'routes';
 import { Router, browserHistory, match } from 'react-router';
 import { Provider } from 'react-redux';
-import store from 'components/store';
+import store from 'components/redux/store';
 import DevTools  from 'containers/DevTools';
 import prepareData from 'helpers/PrepareData';
 

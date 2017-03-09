@@ -38,13 +38,14 @@ class BlogList extends React.Component {
 
   render() {
     const { activePage, itemsPerPage } = this.state;
-    const showItems = this.props.items.slice(
+    const { items, like } = this.props;
+    const showItems = items.slice(
        activePage * itemsPerPage - itemsPerPage,
        activePage * itemsPerPage);
     return <div>
             {showItems.map((item) =>
               <BlogItem key={item.id} item={item}
-              likeHandler={() => (this.props.like(item.id))} />
+              likeHandler={() => (like(item.id))} />
             )}
             <PieChart typeChart={'pie'} items={this.dataForChart()}/>
             <Pagination items={this.itemsForPagination()}
