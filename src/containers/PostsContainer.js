@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import BlogPage from 'components/containers/BlogPage';
+import BlogList from 'components/containers/BlogList';
 import { incLike } from 'components/actions/Posts';
 
 const stateToProps = (state) => (
@@ -12,8 +12,8 @@ const stateToProps = (state) => (
 
 const actionToProps = (dispatch) => (
   {
-    like: (id, items) => (dispatch(incLike(id, items)))
+    like: (id) => (dispatch(incLike(id)))
   }
 );
 
-export default connect(stateToProps, actionToProps)(BlogPage);
+export default connect(stateToProps, actionToProps)(BlogList);

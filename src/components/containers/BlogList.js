@@ -1,6 +1,7 @@
 import React, {PropTypes} from 'react';
 import BlogItem from 'components/ui/BlogItem';
 import Pagination from 'components/elements/Pagination';
+import PieChart from 'components/elements/Chart';
 
 class BlogList extends React.Component {
   constructor(props) {
@@ -29,29 +30,36 @@ class BlogList extends React.Component {
     return a;
   }
 
+  dataForChart() {
+    return  this.props.items.map((item) => (
+       [item.metadata.author || 'not defined', item.metadata.like || 0]
+    ));
+  }
+
   render() {
-    const { items, likeHandler } = this.props;
     const { activePage, itemsPerPage } = this.state;
-    const showItems = items.slice(
+    const showItems = this.props.items.slice(
        activePage * itemsPerPage - itemsPerPage,
        activePage * itemsPerPage);
-
     return <div>
             {showItems.map((item) =>
-              <BlogItem key={item.id} item={item} likeHandler={likeHandler} />
+              <BlogItem key={item.id} item={item}
+              likeHandler={() => (this.props.like(item.id))} />
             )}
+            <PieChart typeChart={'pie'} items={this.dataForChart()}/>
             <Pagination items={this.itemsForPagination()}
               activePage={activePage}
               changeActivePage={(n) => this.setState({activePage: n})}
               changeItemsPerPage={(n) => this.changeItemsPerPage(n)}
-              itemsPerPage={itemsPerPage}/>
+              itemsPerPage={itemsPerPage}
+            />
            </div>;
   }
 }
 
 BlogList.propTypes = {
   items: PropTypes.array,
-  likeHandler: PropTypes.func
+  like: PropTypes.func
 };
 
 export default BlogList;
