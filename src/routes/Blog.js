@@ -3,8 +3,8 @@
 import About from 'components/ui/About';
 import MainLayout from 'components/layouts/MainLayout';
 import { postsPath } from 'helpers/routes';
-import { fetchPosts } from 'components/actions/Posts';
-import { fetchPost } from 'components/actions/Post';
+import { fetchPosts } from 'components/redux/actions/Posts';
+import { fetchPost } from 'components/redux/actions/Post';
 import PostsContainer from 'containers/PostsContainer';
 import PostContainer from 'containers/PostContainer';
 
