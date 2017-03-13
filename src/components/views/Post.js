@@ -4,7 +4,7 @@ import ToHome from 'components/ui/ToHome';
 import BlogItem from 'components/ui/BlogItem';
 
 const Post = (item) => {
-  if (item.item !== null) {
+  if (item.item) {
     return <div>
             <ToHome/>
             <BlogItem item={item.item}

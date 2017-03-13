@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import BlogList from 'components/containers/BlogList';
-import { incLike } from 'components/redux/actions/Posts';
+import { incLike } from 'components/redux/actions/Like';
 
 const stateToProps = (state) => (
   {
