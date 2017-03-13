@@ -16,7 +16,7 @@ export default function post(state = initialState, action) {
     case POST_FETCH_ERROR:
       return Object.assign({}, initialState, {error: true});
     case POST_INC_LIKE:
-      return Object.assign({}, initialState, {entry: action.item});
+      return Object.assign({}, initialState, {entry: action.items});
     default:
       return state;
   }
