@@ -1,39 +1,39 @@
-import * as types from '../const/actionTypes/Posts';
-import { POST_INC_LIKE } from '../const/actionTypes/Post';
+import * as types from '../const/actionTypes/Like';
 import request from 'superagent';
 import url from 'components/const/StaticData';
-import store from 'components/redux/store';
+import { requestSuccess  as requestSuccessPost } from './Post';
+import { requestSuccess  as requestSuccessPosts } from './Posts';
 
-const likePlus = (items) => ({
-  type: items instanceof Array ? types.POSTS_INC_LIKE : POST_INC_LIKE,
-  items
+const requestIncLike = (id) => ({
+  type: types.LIKE_REQUEST,
+  id
 });
 
-const updatePost = (item) =>  (
-  request.put(`${url}/post`)
-  .set('Content-Type', 'application/json')
-  .accept('application/json')
-  .send(`{"id":${item.id},"like":${item.metadata.like}}`)
-  .end(null)
-);
+const requestError = (error) => ({
+  type: types.LIKE_ERROR,
+  error
+});
 
-const addLike = (item) => {
-  const m = Object.assign({}, item);
-  m.metadata.like += 1;
-  return m;
-};
+const requestSuccess = (response) => ({
+  type: types.LIKE_SUCCESS,
+  response
+});
 
-export function incLike(id) {
-  let changedItem = null;
+export function incLike(id, all = false) {
   return (dispatch) => {
-    const items = store.getState().posts.entries.map((item) => {
-      if (item.id !== id) return item;
-      changedItem = addLike(item);
-      return changedItem;
+    dispatch(requestIncLike(id));
+    return request.put(`${url}/post/like`)
+    .set('Content-Type', 'application/json')
+    .accept('application/json')
+    .send(`{"id":${id}, "all":${all}}`)
+    .end((err, response) => {
+      if (err)
+        dispatch(requestError(response.status));
+      else {
+        dispatch(requestSuccess(response.body));
+        all ? dispatch(requestSuccessPosts(response.body)) :
+              dispatch(requestSuccessPost(response.body[0]));
+      }
     });
-    if (changedItem == null) changedItem = addLike(store.getState().post.entry);
-    updatePost(changedItem);
-    if (items.length > 0) dispatch(likePlus(items));
-    if (store.getState().post.entry !== null) dispatch(likePlus(changedItem));
   };
 }

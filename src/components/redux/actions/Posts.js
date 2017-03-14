@@ -9,7 +9,8 @@ const requestPosts = () => ({
 const requestError = () => ({
   type: types.POSTS_FETCH_ERROR
 });
-const requestSuccess = (response) => ({
+
+export const requestSuccess = (response) => ({
   type: types.POSTS_FETCH_SUCCESS,
   response
 });
