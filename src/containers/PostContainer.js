@@ -12,7 +12,7 @@ const stateToProps = (state) => (
 
 const actionToProps = (dispatch) => (
   {
-    like: (id) => (dispatch(incLike(id)))
+    like: (id) => (dispatch(incLike(id, false)))
   }
 );
 

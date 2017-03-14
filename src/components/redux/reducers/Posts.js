@@ -1,5 +1,5 @@
 import { POSTS_FETCH_REQUEST, POSTS_FETCH_SUCCESS,
-         POSTS_FETCH_ERROR, POSTS_INC_LIKE } from '../const/actionTypes/Posts';
+         POSTS_FETCH_ERROR } from '../const/actionTypes/Posts';
 
 const initialState = {
   isFetching: false,
@@ -15,8 +15,6 @@ export default function post(state = initialState, action) {
       return Object.assign({}, initialState, {entries: action.response});
     case POSTS_FETCH_ERROR:
       return Object.assign({}, initialState, {error: true});
-    case POSTS_INC_LIKE:
-      return Object.assign({}, initialState, {entries: action.items});
     default:
       return state;
   }

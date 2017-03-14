@@ -11,7 +11,7 @@ const requestError = () => ({
   type: types.POST_FETCH_ERROR
 });
 
-const requestSuccess = (response) => ({
+export const requestSuccess = (response) => ({
   type: types.POST_FETCH_SUCCESS,
   response
 });
@@ -24,7 +24,7 @@ export function fetchPost(id) {
             .get(`${url}/post/${id}.json`)
             .end((err, response) => {
               err ? dispatch(requestError())
-                  : dispatch(requestSuccess(response.body));
+                  : dispatch(requestSuccess(response.body[0]));
             });
   };
 }
