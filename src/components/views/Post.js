@@ -3,12 +3,12 @@ import TextBox from 'components/elements/TextBox';
 import ToHome from 'components/ui/ToHome';
 import BlogItem from 'components/ui/BlogItem';
 
-const Post = (item) => {
-  if (item.item) {
+const Post = ({item, like}) => {
+  if (item) {
     return <div>
             <ToHome/>
-            <BlogItem item={item.item}
-                likeHandler={(id) => item.like(id)}/>
+            <BlogItem item={item}
+                likeHandler={(id) => like(id)}/>
            </div>;
   }
   return <TextBox txt={'Item not found'}/>;
