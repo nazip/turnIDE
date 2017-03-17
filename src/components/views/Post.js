@@ -4,13 +4,12 @@ import ToHome from 'components/ui/ToHome';
 import BlogItem from 'components/ui/BlogItem';
 
 const Post = ({item, like}) => {
-  if (item) {
+  if (item)
     return <div>
             <ToHome/>
             <BlogItem item={item}
                 likeHandler={(id) => like(id)}/>
            </div>;
-  }
   return <TextBox txt={'Item not found'}/>;
 };
 

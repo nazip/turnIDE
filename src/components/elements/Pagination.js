@@ -20,7 +20,7 @@ const Pegination = ({items, activePage, itemsPerPage,
 );
 
 Pegination.propTypes = {
-  items: PropTypes.arrayOf(PropTypes.number),
+  items: PropTypes.array,
   activePage: PropTypes.number,
   itemsPerPage: PropTypes.number,
   changeActivePage: PropTypes.func,

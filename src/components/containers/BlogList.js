@@ -1,14 +1,15 @@
 import React, {PropTypes} from 'react';
 import BlogItem from 'components/ui/BlogItem';
 import Pagination from 'components/elements/Pagination';
-import PieChart from 'components/elements/Chart';
+import WaitingFor from 'components/elements/WaitingFor';
+//import PieChart from 'components/elements/Chart';
+import LikeContainer from 'containers/LikeContainer';
 
 class BlogList extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {activePage: 1, itemsPerPage: 2};
     this.changeItemsPerPage = this.changeItemsPerPage.bind(this);
-    this.itemsForPagination = this.itemsForPagination.bind(this);
+    this.makeButtons = this.makeButtons.bind(this);
   }
 
   changeItemsPerPage(n) {
@@ -20,47 +21,46 @@ class BlogList extends React.Component {
       this.setState({itemsPerPage: itemsPerPage + 1});
   }
 
-  itemsForPagination() {
-    const { itemsPerPage } = this.state;
-    const { items } = this.props;
-    const a =
-    new Array(parseInt(items.length / itemsPerPage) +
-        (items.length / itemsPerPage > 0 ? 1 : 0));
-    for (let i = 1; i < a.length; i++) a[i] = i;
-    return a;
-  }
-
   dataForChart() {
     return  this.props.items.map((item) => (
        [item.metadata.author || 'not defined', item.metadata.like || 0]
     ));
   }
 
+  makeButtons(pageCount) {
+    const a = [0..pageCount - 1];
+    for (let i = 0; i < pageCount; i++) a[i] = 0;
+    return a;
+  }
+
   render() {
-    const { activePage, itemsPerPage } = this.state;
-    const { items, like } = this.props;
-    const showItems = items.slice(
-       activePage * itemsPerPage - itemsPerPage,
-       activePage * itemsPerPage);
+    const { items, isFetching,
+            changePageSize, changeActivePage, pagination} = this.props;
+    const {activePage, pageSize, pageCount} = pagination;
+    if (isFetching) return <WaitingFor/>;
     return <div>
-            {showItems.map((item) =>
-              <BlogItem key={item.id} item={item}
-              likeHandler={() => (like(item.id))} />
-            )}
-            <PieChart typeChart={'pie'} items={this.dataForChart()}/>
-            <Pagination items={this.itemsForPagination()}
-              activePage={activePage}
-              changeActivePage={(n) => this.setState({activePage: n})}
-              changeItemsPerPage={(n) => this.changeItemsPerPage(n)}
-              itemsPerPage={itemsPerPage}
-            />
+              {items.map((item) =>
+                <LikeContainer key={item.id} item={item}>
+                  <BlogItem />
+                </LikeContainer>
+              )}
+              <Pagination items={this.makeButtons(pageCount)}
+                activePage={activePage}
+                changeActivePage={(n) => changeActivePage(n)}
+                changeItemsPerPage={(n) => changePageSize(n)}
+                itemsPerPage={pageSize}
+              />
            </div>;
   }
 }
 
 BlogList.propTypes = {
+  isFetching: PropTypes.bool,
   items: PropTypes.array,
-  like: PropTypes.func
+  like: PropTypes.func,
+  pagination: PropTypes.object,
+  changeActivePage: PropTypes.func,
+  changePageSize: PropTypes.func
 };
 
 export default BlogList;

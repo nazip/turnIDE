@@ -1,5 +1,3 @@
-// import BlogPage from 'components/containers/BlogPage';
-// import Post from 'components/views/Post';
 import About from 'components/ui/About';
 import MainLayout from 'components/layouts/MainLayout';
 import { postsPath } from 'helpers/routes';
@@ -12,7 +10,10 @@ const Index = {
   path: '/',
   component: PostsContainer,
   prepareData: (store) => {
-    store.dispatch(fetchPosts());
+    store.dispatch(
+      fetchPosts(store.getState().posts.pagination.activePage,
+                 store.getState().posts.pagination.pageSize)
+    );
   }
 };
 

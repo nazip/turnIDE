@@ -1,23 +1,41 @@
-import { POSTS_FETCH_REQUEST, POSTS_FETCH_SUCCESS,
-         POSTS_FETCH_ERROR } from '../const/actionTypes/Posts';
-import { LIKE_SUCCESS } from '../const/actionTypes/Like';
-
+import * as type from '../const/actionTypes/Posts';
+import _ from 'lodash';
 
 const initialState = {
   isFetching: false,
   error: false,
-  entries: []
+  entries: [],
+  pagination: {
+    activePage: 0,
+    pageSize: 4,
+    pageCount: 1
+  }
 };
+
+const getEntries = (entries) => (
+  entries.map((entry) =>
+    Object.assign({}, {image: entry.image}, {txt: entry.txt}, {id: entry.id},
+    {metadata: _.pick(entry.metadata, 'author', 'updatedAt', 'createdAt')}
+  ))
+);
 
 export default function post(state = initialState, action) {
   switch (action.type) {
-    case POSTS_FETCH_REQUEST:
+    case type.POSTS_FETCH_REQUEST:
       return Object.assign({}, initialState, {isFetching: true});
-    case POSTS_FETCH_SUCCESS:
-    case LIKE_SUCCESS:
-      return Object.assign({}, initialState, {entries: action.response});
-    case POSTS_FETCH_ERROR:
+    case type.POSTS_FETCH_SUCCESS:
+      return Object.assign({}, initialState,
+                           {entries: getEntries(action.response.entries)},
+                           {pagination: action.response.pagination});
+    case type.POSTS_FETCH_ERROR:
       return Object.assign({}, initialState, {error: true});
+    case type.SET_PAGESIZE:
+      return Object.assign({}, state,
+        {pagination: {
+          activePage: 0,
+          pageSize: Math.max(state.pagination.pageSize + action.pageSize, 1),
+          pageCount: 1}
+        });
     default:
       return state;
   }

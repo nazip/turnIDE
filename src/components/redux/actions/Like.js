@@ -1,11 +1,11 @@
 import * as types from '../const/actionTypes/Like';
 
-export function incLike(id, all) {
+export function incLike(id) {
   return {
     API_CALL: {
-      endpoint: `/post/like?id=${id}&all=${all}`,
+      endpoint: '/post/like',
       method: 'PUT',
-      query: {},
+      query: {id},
       types: [
         types.LIKE_REQUEST,
         types.LIKE_SUCCESS,

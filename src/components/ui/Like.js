@@ -13,6 +13,7 @@ const Like = ({like, likeHandler}) => (
 
 Like.defaultProps = { like: 0 };
 Like.propTypes = {
+  isFetching: PropTypes.bool,
   like: PropTypes.number,
   likeHandler: PropTypes.func
 };
