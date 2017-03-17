@@ -9,7 +9,6 @@ function APICall({ endpoint, method, query, payload }) {
 
     if (query)
       r.query(stringify(query));
-
     if (payload)
       r = r.send(payload);
 
