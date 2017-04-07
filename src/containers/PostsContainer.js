@@ -1,6 +1,5 @@
 import { connect } from 'react-redux';
 import BlogList from 'components/containers/BlogList';
-import { incLike } from 'components/redux/actions/Like';
 import * as type from 'components/redux/const/actionTypes/Posts';
 import { fetchPosts } from 'components/redux/actions/Posts';
 import store  from 'components/redux/store';
@@ -16,7 +15,6 @@ const stateToProps = (state) => (
 
 const actionToProps = (dispatch) => (
   {
-    like: (id) => (dispatch(incLike(id))),
     changePageSize:
       (pageSize) => {
         const oldPageSize = -1 * pageSize;

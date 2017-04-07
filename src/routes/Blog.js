@@ -10,9 +10,9 @@ const Index = {
   path: '/',
   component: PostsContainer,
   prepareData: (store) => {
+    const {activePage, pageSize} = store.getState().posts.pagination;
     store.dispatch(
-      fetchPosts(store.getState().posts.pagination.activePage,
-                 store.getState().posts.pagination.pageSize)
+      fetchPosts(activePage, pageSize)
     );
   }
 };

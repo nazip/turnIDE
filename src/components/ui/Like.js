@@ -1,20 +1,21 @@
 import React, { PropTypes } from 'react';
 import { Button} from 'semantic-ui-react';
 
-const Like = ({like, likeHandler}) => (
+const Like = ({id, like, likeHandler}) => (
   <Button
     content='Like'
     icon='heart'
-    label={{ as: 'a', basic: true, content: like || 0 }}
+    label={{ as: 'a', basic: true,
+      content: `${like instanceof Object ? like(id) : like}` || 0 }}
     labelPosition='right'
-    onClick={likeHandler}
+    onClick={() => likeHandler(id)}
   />
 );
 
-Like.defaultProps = { like: 0 };
 Like.propTypes = {
   isFetching: PropTypes.bool,
-  like: PropTypes.number,
+  id: PropTypes.number,
+  like: PropTypes.oneOfType([PropTypes.number, PropTypes.func]),
   likeHandler: PropTypes.func
 };
 

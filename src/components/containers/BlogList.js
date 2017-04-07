@@ -3,7 +3,6 @@ import BlogItem from 'components/ui/BlogItem';
 import Pagination from 'components/elements/Pagination';
 import WaitingFor from 'components/elements/WaitingFor';
 //import PieChart from 'components/elements/Chart';
-import LikeContainer from 'containers/LikeContainer';
 
 class BlogList extends React.Component {
   constructor(props) {
@@ -34,16 +33,12 @@ class BlogList extends React.Component {
   }
 
   render() {
-    const { items, isFetching,
-            changePageSize, changeActivePage, pagination} = this.props;
-    const {activePage, pageSize, pageCount} = pagination;
+    const {items, isFetching,
+            changePageSize, changeActivePage,
+            pagination: {activePage, pageSize, pageCount}} = this.props;
     if (isFetching) return <WaitingFor/>;
     return <div>
-              {items.map((item) =>
-                <LikeContainer key={item.id} item={item}>
-                  <BlogItem />
-                </LikeContainer>
-              )}
+              {items.map((item) => <BlogItem key={item.id} item={item}/>)}
               <Pagination items={this.makeButtons(pageCount)}
                 activePage={activePage}
                 changeActivePage={(n) => changeActivePage(n)}
