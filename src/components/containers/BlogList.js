@@ -34,13 +34,13 @@ class BlogList extends React.Component {
 
   render() {
     const {items, isFetching,
-            changePageSize, changeActivePage, linkToBlog,
+            changePageSize, changeActivePage,
             pagination: {activePage, pageSize, pageCount}} = this.props;
     if (isFetching) return <WaitingFor/>;
     return <div>
               {items.map((item) => <BlogItem
                 key={item.id} item={item}
-                linkToBlog={linkToBlog(item.id)} />)}
+                linkToBlog={item.path} />)}
               <Pagination items={this.makeButtons(pageCount)}
                 activePage={activePage}
                 changeActivePage={(n) => changeActivePage(n)}
