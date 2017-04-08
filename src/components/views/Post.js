@@ -3,18 +3,16 @@ import TextBox from 'components/elements/TextBox';
 import ToHome from 'components/ui/ToHome';
 import BlogItem from 'components/ui/BlogItem';
 
-const Post = ({item, like}) => {
+const Post = ({item}) => {
   if (item)
     return <div>
             <ToHome/>
-            <BlogItem item={item}
-                likeHandler={(id) => like(id)}/>
+            <BlogItem item={item}/>
            </div>;
   return <TextBox txt={'Item not found'}/>;
 };
 
 Post.propTypes = {
-  item: PropTypes.object,
-  like: PropTypes.func
+  item: PropTypes.object
 };
 export default Post;

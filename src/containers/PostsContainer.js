@@ -3,6 +3,7 @@ import BlogList from 'components/containers/BlogList';
 import * as type from 'components/redux/const/actionTypes/Posts';
 import { fetchPosts } from 'components/redux/actions/Posts';
 import store  from 'components/redux/store';
+import { postsPath } from 'helpers/routes';
 
 const stateToProps = (state) => (
   {
@@ -27,7 +28,8 @@ const actionToProps = (dispatch) => (
       (activePage) => {
         dispatch(fetchPosts(activePage,
           store.getState().posts.pagination.pageSize));
-      }
+      },
+    linkToBlog: (id) => postsPath(id)
   }
 );
 

@@ -1,6 +1,8 @@
 import * as types from '../const/actionTypes/Posts';
+import * as pagination from '../const/Pagination';
 
-export function fetchPosts(activePage, pageSize) {
+export function fetchPosts(activePage = pagination.ACTIVE_PAGE_DEFAULT,
+                           pageSize = pagination.PAGE_SIZE_DEFAULT) {
   return {
     API_CALL: {
       endpoint: '/',
