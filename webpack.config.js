@@ -1,14 +1,14 @@
 /* eslint-disable */
 
-var path = require('path');
-var webpack = require('webpack');
-var root = path.join(process.cwd(), 'src');
+import path from 'path';
+import webpack from 'webpack';
 
-module.exports = {
+const root = path.join(process.cwd(), 'src');
+
+export default  {
   entry: [
     'react-hot-loader/patch',
-    'webpack-dev-server/client?http://localhost:3001',
-    'webpack/hot/only-dev-server',
+    'webpack-hot-middleware/client',
     './index.js'
   ],
 
@@ -47,6 +47,11 @@ module.exports = {
   },
 
   plugins: [
+    new webpack.DefinePlugin({
+      __SERVER__: false,
+      __CLIENT__:  true,
+      __DEVELOPMENT__: true
+    }),
     new webpack.HotModuleReplacementPlugin()
   ]
 };

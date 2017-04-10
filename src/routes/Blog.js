@@ -11,18 +11,15 @@ const Index = {
   component: PostsContainer,
   prepareData: (store) => {
     const {activePage, pageSize} = store.getState().posts.pagination;
-    store.dispatch(
-      fetchPosts(activePage, pageSize)
-    );
+    return store.dispatch(fetchPosts(activePage, pageSize));
   }
 };
 
 const BlogsItem = {
   path: postsPath(),
   component: PostContainer,
-  prepareData: (store, query, params) => {
-    store.dispatch(fetchPost(params.id));
-  }
+  prepareData: (store, query, params) =>
+    store.dispatch(fetchPost(params.id))
 };
 
 const AboutBlog = {
