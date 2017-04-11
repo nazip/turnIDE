@@ -3,7 +3,9 @@ const path = require('path');
 require('app-module-path').addPath(path.join(process.cwd(), 'src'));
 require('./globals');
 require('babel-core/register');
-require.extensions['.css'] = () => {};
+require.extensions['.css'] = () => {
+  return;
+};
 
 const webpack = require('webpack');
 
@@ -12,7 +14,7 @@ const port = 3001;
 
 const express = require('express');
 const application = express();
-// application.use(express.static('src/static'));
+application.use(express.static('src/static'));
 application.set('views', __dirname);
 application.set('view engine', 'ejs');
 

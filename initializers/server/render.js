@@ -9,19 +9,22 @@ import { compact } from 'lodash/array';
 
 export default (req,res) => {
   match({routes, location: req.url}, (error, redirectLocation, renderProps) =>
-      Promise.all(compact(prepareData(store, renderProps))).then(() => {
+  {
+    // if (renderProps) {
+      return Promise.all(compact(prepareData(store, renderProps))).then(() => {
         const initialState = JSON.stringify(store.getState());
-
         const content = ReactDomServer.renderToString(
-          React.CreateElement(
+          React.createElement(
             Provider,
             { store },
-            React.CreateElement(RouterContext, renderProps)
+            React.createElement(RouterContext, renderProps)
           )
         );
 
         res.status(200);
         res.render('index', { initialState, content });
-      })
+      });
+    // }
+  }
   );
 };

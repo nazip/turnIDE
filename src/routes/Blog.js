@@ -18,9 +18,7 @@ const Index = {
 const BlogsItem = {
   path: postsPath(),
   component: PostContainer,
-  prepareData: (store, query, params) => {
-    return store.dispatch(fetchPost(params.id));
-  }
+  prepareData: (store, query, params) => store.dispatch(fetchPost(params.id))
 };
 
 const AboutBlog = {
