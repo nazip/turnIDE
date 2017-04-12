@@ -3,9 +3,11 @@ import  ReactDOM from 'react-dom';
 import routes from 'routes';
 import { Router, browserHistory, match } from 'react-router';
 import { Provider } from 'react-redux';
-import store from 'components/redux/store';
+import createStore from 'components/redux/store';
 import DevTools  from 'containers/DevTools';
 import prepareData from 'helpers/PrepareData';
+
+const store = createStore(window.__INITIAL_STATE__);
 
 function listenBeforeCb(location) {
   match({location, routes}, (error, redirect, state) => {
@@ -25,7 +27,13 @@ const App = () => (
   </Provider>
 );
 
-ReactDOM.render(<DevTools store={store}/>, document.getElementById('devtools'));
+ReactDOM.render(
+  <DevTools store={store}/>,
+  document.getElementById('devtools'),
+  () => {
+    delete window.__INITIAL_STATE__ ;
+  }
+);
 
 
 export default App;

@@ -7,22 +7,23 @@ require.extensions['.css'] = () => {
   return;
 };
 
-const webpack = require('webpack');
-
-// const host = 'localhost';
 const port = 3001;
 
 const express = require('express');
 const application = express();
+
 application.use(express.static('src/static'));
+application.use(express.static('node_modules/semantic-ui/examples'));
+
 application.set('views', __dirname);
 application.set('view engine', 'ejs');
 
-// const webpackDevServer = require('webpack-dev-server');
+const webpack = require('webpack');
 const config = require('../../webpack.config.js').default;
+const compiler = webpack(config);
+
 const webpackDev = require('webpack-dev-middleware');
 const webpackHot = require('webpack-hot-middleware');
-const compiler = webpack(config);
 
 application.use(
   webpackDev(

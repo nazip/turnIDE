@@ -5,11 +5,13 @@ import { fetchPosts } from 'components/redux/actions/Posts';
 import { fetchPost } from 'components/redux/actions/Post';
 import PostsContainer from 'containers/PostsContainer';
 import PostContainer from 'containers/PostContainer';
+import initialLoad from 'helpers/InitialLoad';
 
 const Index = {
   path: '/',
   component: PostsContainer,
   prepareData: (store) => {
+    if (initialLoad()) return;
     const {activePage, pageSize} = store.getState().posts.pagination;
     return store.dispatch(fetchPosts(activePage, pageSize));
   }
