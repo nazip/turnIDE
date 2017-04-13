@@ -13,6 +13,7 @@ const express = require('express');
 const application = express();
 
 application.use(express.static('src/static'));
+application.use(express.static('src/static/img'));
 application.use(express.static('node_modules/semantic-ui/examples'));
 
 application.set('views', __dirname);
@@ -36,7 +37,6 @@ application.use(
   )
 );
 application.use(webpackHot(compiler));
-
 application.get('*', require('./render').default);
 application.listen(port,
   function() {console.log(`Server started (port ${port})`);});

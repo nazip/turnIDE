@@ -1,11 +1,11 @@
 import About from 'components/ui/About';
+import initialLoad from 'helpers/initialLoad';
 import MainLayout from 'components/layouts/MainLayout';
 import { postsPath } from 'helpers/routes';
 import { fetchPosts } from 'components/redux/actions/Posts';
 import { fetchPost } from 'components/redux/actions/Post';
 import PostsContainer from 'containers/PostsContainer';
 import PostContainer from 'containers/PostContainer';
-import initialLoad from 'helpers/initialLoad';
 
 const Index = {
   path: '/',
