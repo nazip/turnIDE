@@ -5,7 +5,7 @@ import { fetchPosts } from 'components/redux/actions/Posts';
 import { fetchPost } from 'components/redux/actions/Post';
 import PostsContainer from 'containers/PostsContainer';
 import PostContainer from 'containers/PostContainer';
-import initialLoad from 'helpers/InitialLoad';
+import initialLoad from 'helpers/initialLoad';
 
 const Index = {
   path: '/',

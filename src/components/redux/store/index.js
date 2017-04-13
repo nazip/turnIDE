@@ -4,8 +4,8 @@ import API from 'components/redux/middleware/API';
 import DevTools from 'containers/DevTools';
 
 const store = (initialState) =>  createStore(
-  reducers,
   initialState,
+  reducers,
   compose(applyMiddleware(API),
           DevTools.instrument()));
 

@@ -2,12 +2,13 @@ import React from 'react';
 import ReactDomServer from 'react-dom/server';
 import { Provider } from 'react-redux';
 import { match, RouterContext } from 'react-router';
-import createStore from 'components/redux/store';
 import routes from 'routes';
 import prepareData from 'helpers/PrepareData';
 import { compact } from 'lodash/array';
+// import createStore  from 'components/redux/store';
+import store  from 'components/redux/store';
 
-const store = createStore();
+// const store = createStore();
 
 export default (req,res) => {
   match({routes, location: req.url}, (error, redirectLocation, renderProps) =>
