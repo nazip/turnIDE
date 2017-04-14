@@ -1,5 +1,6 @@
-import React, {PropTypes} from 'react';
+import React from 'react';
 import { Menu, Button, Label } from 'semantic-ui-react';
+import PropTypes from 'prop-types';
 
 const Pegination = ({items, activePage, itemsPerPage,
       changeActivePage, changeItemsPerPage}) => (

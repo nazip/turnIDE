@@ -1,4 +1,5 @@
-import React, {PropTypes} from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import Img from 'components/elements/Img';
 import Like from 'components/ui/Like';
 import MetaData from 'components/ui/MetaData';

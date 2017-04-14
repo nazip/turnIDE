@@ -1,6 +1,7 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import TextBox from 'components/elements/TextBox';
 import { Label } from 'semantic-ui-react';
+import PropTypes from 'prop-types';
 
 const MetaData = ({metadata: {author, createdAt, updatedAt}}) => (
   <div className={'metadata'}>

@@ -29,13 +29,6 @@ export default function post(state = initialState, action) {
                            {pagination: action.response.pagination});
     case type.POSTS_FETCH_ERROR:
       return Object.assign({}, initialState, {error: true});
-    case type.SET_PAGESIZE:
-      return Object.assign({}, state,
-        {pagination: {
-          activePage: 0,
-          pageSize: Math.max(state.pagination.pageSize + action.pageSize, 1),
-          pageCount: 1}
-        });
     default:
       return state;
   }

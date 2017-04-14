@@ -1,5 +1,6 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import { Button} from 'semantic-ui-react';
+import PropTypes from 'prop-types';
 
 const Like = ({id, like, likeHandler}) => (
   <Button

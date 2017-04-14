@@ -1,0 +1,2 @@
+export const SET_ACTIVEPAGE = 'SET_ACTIVEPAGE';
+export const SET_PAGESIZE = 'SET_PAGESIZE';

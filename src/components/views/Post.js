@@ -1,7 +1,8 @@
-import React, {PropTypes} from 'react';
+import React from 'react';
 import TextBox from 'components/elements/TextBox';
 import ToHome from 'components/ui/ToHome';
 import BlogItem from 'components/ui/BlogItem';
+import PropTypes from 'prop-types';
 
 const Post = ({item}) => {
   if (item)

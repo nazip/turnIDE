@@ -1,4 +1,5 @@
-import React, {PropTypes} from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import BlogItem from 'components/ui/BlogItem';
 import Pagination from 'components/elements/Pagination';
 import WaitingFor from 'components/elements/WaitingFor';

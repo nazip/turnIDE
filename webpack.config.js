@@ -1,7 +1,6 @@
 /* eslint-disable */
-
-import path from 'path';
 import webpack from 'webpack';
+import path from 'path';
 
 const root = path.join(process.cwd(), 'src');
 
