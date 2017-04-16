@@ -8,15 +8,15 @@ class Chart extends Component {
     this.chart = c3.generate({
       bindto: '.chart',
       data: {
-        columns: this.props.items,
+        columns: this.props.data,
         type: this.props.typeChart
       }
     });
   }
 
   componentWillReceiveProps() {
-    this.chart.unload({ids: this.props.items.map((item) => (item[0]))});
-    this.chart.load({columns: this.props.items});
+    this.chart.unload({ids: this.props.data.map((item) => (item[0]))});
+    this.chart.load({columns: this.props.data});
   }
 
   componentWillUnmount() {
@@ -29,7 +29,7 @@ class Chart extends Component {
 }
 
 Chart.propTypes = {
-  items: PropTypes.array,
+  data: PropTypes.array,
   typeChart: PropTypes.string
 };
 

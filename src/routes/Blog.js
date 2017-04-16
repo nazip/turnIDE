@@ -12,8 +12,7 @@ const Index = {
   component: PostsContainer,
   prepareData: (store) => {
     if (initialLoad()) return;
-    const {activePage, pageSize} = store.getState().posts.pagination;
-    return store.dispatch(fetchPosts(activePage, pageSize));
+    return store.dispatch(fetchPosts());
   }
 };
 

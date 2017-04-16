@@ -6,6 +6,7 @@ import routes from 'routes';
 import prepareData from 'helpers/PrepareData';
 import createStore  from 'components/redux/store';
 import { compact } from 'lodash/array';
+import Helmet from 'react-helmet';
 
 const store = createStore();
 
@@ -22,10 +23,11 @@ export default (req,res) => {
           React.createElement(RouterContext, renderProps)
         )
       );
+
+      const head = Helmet.rewind();
       res.status(200);
-      res.render('index', { initialState, content });
-    })
-    .catch(error => console.log(error));
+      res.render('index', { initialState, content, head });
+    });
   }
   );
 };

@@ -31,9 +31,8 @@ ReactDOM.render(
   <DevTools store={store}/>,
   document.getElementById('devtools'),
   () => {
-    delete window.__INITIAL_STATE__ ;
+    delete window.__INITIAL_STATE__;
   }
 );
-
 
 export default App;

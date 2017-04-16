@@ -2,30 +2,33 @@ import React from 'react';
 import { Menu, Button, Label } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 
-const Pegination = ({items, activePage, itemsPerPage,
-      changeActivePage, changeItemsPerPage}) => (
+const Pegination = ({buttons, activePage, pageSize,
+      setActivePage, setPageSize}) => (
   <div>
       <Menu pagination>
-        {items.map((i, key) => (
-          <Menu.Item name={(key).toString()}
+
+        {buttons.map((i, key) => (
+          <Menu.Item name={key.toString()}
                      active={activePage === key}
-                     key={key} onClick={changeActivePage.bind(this, key)} />
+                     key={key} onClick={setActivePage.bind(this, key)} />
         ))}
       </Menu>
       <Button.Group>
-        <Button onClick={changeItemsPerPage.bind(this, -1)}>-</Button>
-        <Label>Items per Page = {itemsPerPage}</Label>
-        <Button onClick={changeItemsPerPage.bind(this, 1)}>+</Button>
+        <Button onClick={setPageSize.bind(this, pageSize - 1)}>
+        -</Button>
+        <Label>Items per Page = {pageSize}</Label>
+        <Button onClick={setPageSize.bind(this, pageSize + 1)}>
+        +</Button>
       </Button.Group>
   </div>
 );
 
 Pegination.propTypes = {
-  items: PropTypes.array,
+  buttons: PropTypes.array,
   activePage: PropTypes.number,
-  itemsPerPage: PropTypes.number,
-  changeActivePage: PropTypes.func,
-  changeItemsPerPage: PropTypes.func
+  pageSize: PropTypes.number,
+  setActivePage: PropTypes.func,
+  setPageSize: PropTypes.func
 };
 
 export default Pegination;

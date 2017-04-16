@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import BlogList from 'components/containers/BlogList';
+import Index from 'components/views/index';
 
 const stateToProps = (state) => (
   {
@@ -11,4 +11,4 @@ const stateToProps = (state) => (
   }
 );
 
-export default connect(stateToProps)(BlogList);
+export default connect(stateToProps)(Index);
