@@ -5,7 +5,7 @@ import _ from 'lodash';
 const dataForChart = (items, likes) => (
   items.map((item) => (
     [item.metadata.author || 'not defined',
-      _.findIndex(likes, (like) => like.id == item.id).like || 0]
+      likes[_.findIndex(likes, (like) => like.id == item.id)].like]
   ))
 );
 const stateToProps = (state) => (
