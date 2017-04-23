@@ -15,8 +15,7 @@ const initialState = {
 const getEntries = (entries) => (
   entries.map((entry) =>
     Object.assign({}, {image: entry.image}, {txt: entry.txt}, {id: entry.id},
-    {metadata: _.pick(entry.metadata, 'author', 'updatedAt', 'createdAt')}
-  ))
+    {metadata: _.pick(entry.metadata, 'author', 'updatedAt', 'createdAt')}))
 );
 
 export default function post(state = initialState, action) {

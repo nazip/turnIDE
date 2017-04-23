@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Img from 'components/elements/Img';
-import Like from 'components/ui/Like';
 import MetaData from 'components/ui/MetaData';
-import { Header, Grid, Divider} from 'semantic-ui-react';
+import { Header, Grid, Divider } from 'semantic-ui-react';
 import Link from 'components/elements/Link';
 import LikeContainer from 'containers/LikeContainer';
 
-const BlogItem = ({linkToBlog, item: {image, metadata, id, txt}}) => (
+const BlogItem = ({linkToBlog,
+  item: {image, metadata, id, txt}}) => (
   <Grid columns={2} divided>
       <Grid.Row>
         <Grid.Column>
@@ -15,9 +15,7 @@ const BlogItem = ({linkToBlog, item: {image, metadata, id, txt}}) => (
             {txt}</Link>
           </Header>
           <MetaData metadata={metadata} />
-          <LikeContainer id={id}>
-            <Like/>
-          </LikeContainer>
+          <LikeContainer id={id}/>
         </Grid.Column>
         <Grid.Column>
           <Img img={image} />
