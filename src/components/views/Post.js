@@ -12,7 +12,7 @@ const Post = ({item, edit, editClick}) => {
     return <div>
             <ToHome/>
             <BlogItem item={item}/>
-            <Button icon='edit' onClick={editClick}/>
+            {edit || <Button icon='edit' onClick={editClick}/>}
             {!edit || <EditBlog/>}
             <Helmet title={item.txt}/>
            </div>;
