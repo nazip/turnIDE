@@ -5,6 +5,7 @@ const initialState = {
   isFetching: false,
   error: false,
   entries: [],
+  adding: false,
   pagination: {
     activePage: 0,
     pageSize: 4,
@@ -28,6 +29,8 @@ export default function post(state = initialState, action) {
                            {pagination: action.response.pagination});
     case type.POSTS_FETCH_ERROR:
       return Object.assign({}, initialState, {error: true});
+    case type.POSTS_ADD_TOGGLE:
+      return Object.assign({}, state, {adding: !state.adding});
     default:
       return state;
   }

@@ -4,7 +4,6 @@ import BlogItem from 'components/ui/BlogItem';
 import WaitingFor from 'components/elements/WaitingFor';
 import PaginationContainer from 'containers/PaginationContainer';
 import ChartContainer from 'containers/ChartContainer';
-// import Chart from 'components/elements/Chart';
 
 const BlogList = ({items, isFetching}) => {
   if (isFetching) return <WaitingFor/>;

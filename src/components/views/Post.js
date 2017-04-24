@@ -4,16 +4,17 @@ import ToHome from 'components/ui/ToHome';
 import BlogItem from 'components/ui/BlogItem';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
-import EditBlog from 'components/ui/EditBlog';
 import { Button } from 'semantic-ui-react';
+import EditBlogContainer from 'containers/form/EditBlogContainer';
 
-const Post = ({item, edit, editClick}) => {
+const Post = ({item, editing, editClick}) => {
   if (item)
     return <div>
             <ToHome/>
             <BlogItem item={item}/>
-            {edit || <Button icon='edit' onClick={editClick}/>}
-            {!edit || <EditBlog/>}
+            <Button icon={editing ? 'cancel' : 'edit'} onClick={editClick}
+            label={editing ? 'Cancel' : 'Edit Post'}/>
+            {!editing || <EditBlogContainer/>}
             <Helmet title={item.txt}/>
            </div>;
   return <TextBox txt={'Item not found'}/>;
@@ -22,7 +23,7 @@ const Post = ({item, edit, editClick}) => {
 
 Post.propTypes = {
   item: PropTypes.object,
-  edit: PropTypes.bool,
+  editing: PropTypes.bool,
   editClick: PropTypes.func
 };
 export default Post;

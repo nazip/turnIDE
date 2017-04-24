@@ -4,7 +4,7 @@ const initialState = {
   isFetching: false,
   error: false,
   entry: null,
-  edit: false
+  editing: false
 };
 
 export default function post(state = initialState, action) {
@@ -15,8 +15,8 @@ export default function post(state = initialState, action) {
       return Object.assign({}, initialState, {entry: action.response});
     case type.POST_FETCH_ERROR:
       return Object.assign({}, initialState, {error: true});
-    case type.POST_EDIT:
-      return Object.assign({}, state, {edit: !state.edit});
+    case type.POST_EDIT_TOGGLE:
+      return Object.assign({}, state, {editing: !state.editing});
     default:
       return state;
   }
