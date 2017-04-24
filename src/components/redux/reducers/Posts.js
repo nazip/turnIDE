@@ -5,6 +5,7 @@ const initialState = {
   isFetching: false,
   error: false,
   entries: [],
+  adding: false,
   pagination: {
     activePage: 0,
     pageSize: 4,
@@ -28,6 +29,16 @@ export default function post(state = initialState, action) {
                            {pagination: action.response.pagination});
     case type.POSTS_FETCH_ERROR:
       return Object.assign({}, initialState, {error: true});
+    case type.POSTS_ADD_TOGGLE:
+      return Object.assign({}, state, {adding: !state.adding});
+    case type.POSTS_ADD_REQUEST:
+      return Object.assign({}, state, {adding: true});
+    case type.POSTS_ADD_SUCCESS:
+      return Object.assign({}, initialState,
+                           {entries: getEntries(action.response.entries)},
+                           {pagination: action.response.pagination});
+    case type.POSTS_ADD_ERROR:
+      return Object.assign({}, state, {error: true});
     default:
       return state;
   }

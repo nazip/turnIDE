@@ -14,3 +14,18 @@ export function fetchPost(id) {
     }
   };
 }
+
+export function updatePost(item) {
+  return {
+    API_CALL: {
+      endpoint: `/post/${item.id}.json`,
+      method: 'put',
+      query: {item},
+      types: [
+        types.POST_UPDATE_REQUEST,
+        types.POST_UPDATE_SUCCESS,
+        types.POST_UPDATE_ERROR
+      ]
+    }
+  };
+}

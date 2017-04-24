@@ -16,3 +16,18 @@ export function fetchPosts(activePage = pagination.ACTIVE_PAGE_DEFAULT,
     }
   };
 }
+
+export function addPost(item) {
+  return {
+    API_CALL: {
+      endpoint: '/post',
+      method: 'post',
+      query: {item},
+      types: [
+        types.POSTS_ADD_REQUEST,
+        types.POSTS_ADD_SUCCESS,
+        types.POSTS_ADD_ERROR
+      ]
+    }
+  };
+}
