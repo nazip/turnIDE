@@ -2,8 +2,7 @@ import { reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 import EditBlog from 'components/ui/form/EditBlog';
 import { updatePost } from 'components/redux/actions/Post';
-import { POST_EDIT_TOGGLE } from 'components/redux/const/actionTypes/Post';
- 
+
 const validate = (values) => {
   const errors = {};
 
@@ -32,10 +31,9 @@ const stateToProps = (state) => (
 );
 
 const onSubmit = (post, dispatch) => {
-  dispatch(updatePost(post))
-  .then(dispatch({type: POST_EDIT_TOGGLE}))
-  .catch(alert('Post does not updated'));
+  dispatch(updatePost(post));
 };
+
 
 export default connect(
   stateToProps

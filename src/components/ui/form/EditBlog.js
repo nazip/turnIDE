@@ -1,7 +1,7 @@
 import React from 'react';
 import { Field } from 'redux-form';
 import PropTypes from 'prop-types';
-import renderField from 'components/ui/form/renderFields/EditBlog';
+import renderField from 'components/ui/form/renderField';
 
 const EditBlog = ({ handleSubmit, pristine, submitting, reset }) => (
   <form className="ui form" onSubmit={handleSubmit}>

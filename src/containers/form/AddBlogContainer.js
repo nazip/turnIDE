@@ -1,7 +1,7 @@
 import { reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 import AddBlog from 'components/ui/form/AddBlog';
-import { POSTS_ADD_TOGGLE } from 'components/redux/const/actionTypes/Posts';
+import { addPost } from 'components/redux/actions/Posts';
 
 const validate = (values) => {
   const errors = {};
@@ -24,15 +24,15 @@ const stateToProps = () => (
   {
     initialValues: {
       title: '',
-      author: ''
+      author: '',
+      createdAt: '2017-01-01'
     }
   }
 );
 
-const onSubmit = (values, dispatch) => {
-  alert(JSON.stringify(values));
-  dispatch({type: POSTS_ADD_TOGGLE});
-};
+const onSubmit = (post, dispatch) => (
+   dispatch(addPost(post))
+);
 
 export default connect(
   stateToProps

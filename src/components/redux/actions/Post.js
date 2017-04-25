@@ -5,7 +5,7 @@ export function fetchPost(id) {
     API_CALL: {
       endpoint: `/post/${id}.json`,
       method: 'GET',
-      query: {}, 
+      query: {},
       types: [
         types.POST_FETCH_REQUEST,
         types.POST_FETCH_SUCCESS,

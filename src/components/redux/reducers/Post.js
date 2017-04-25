@@ -23,7 +23,7 @@ export default function post(state = initialState, action) {
     case type.POST_UPDATE_SUCCESS:
       return Object.assign({}, initialState, {entry: action.response});
     case type.POST_UPDATE_ERROR:
-      return Object.assign({}, initialState, {error: true});
+      return Object.assign({}, state, {error: true});
     default:
       return state;
   }

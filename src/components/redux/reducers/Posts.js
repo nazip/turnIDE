@@ -34,9 +34,7 @@ export default function post(state = initialState, action) {
     case type.POSTS_ADD_REQUEST:
       return Object.assign({}, state, {adding: true});
     case type.POSTS_ADD_SUCCESS:
-      return Object.assign({}, initialState,
-                           {entries: getEntries(action.response.entries)},
-                           {pagination: action.response.pagination});
+      return Object.assign({}, state, {adding: false});
     case type.POSTS_ADD_ERROR:
       return Object.assign({}, state, {error: true});
     default:

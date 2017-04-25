@@ -12,7 +12,7 @@ const renderInput = ({ input, label, type,
     || (warning && (<div className="ui yellow label">{warning}</div>))
     )}
   </div>
-);
+); 
 
 renderInput.propTypes = {
   input: PropTypes.object,
