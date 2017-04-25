@@ -2,6 +2,7 @@ import * as type from '../const/actionTypes/Post';
 
 const initialState = {
   isFetching: false,
+  isUpdating: false,
   error: false,
   entry: null,
   editing: false
@@ -17,6 +18,12 @@ export default function post(state = initialState, action) {
       return Object.assign({}, initialState, {error: true});
     case type.POST_EDIT_TOGGLE:
       return Object.assign({}, state, {editing: !state.editing});
+    case type.POST_UPDATE_REQUEST:
+      return Object.assign({}, initialState, {isUpdating: true});
+    case type.POST_UPDATE_SUCCESS:
+      return Object.assign({}, initialState, {entry: action.response});
+    case type.POST_UPDATE_ERROR:
+      return Object.assign({}, initialState, {error: true});
     default:
       return state;
   }

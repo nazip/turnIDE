@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { Button } from 'semantic-ui-react';
 import EditBlogContainer from 'containers/form/EditBlogContainer';
-
+ 
 const Post = ({item, editing, editClick}) => {
   if (item)
     return <div>
