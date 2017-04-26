@@ -1,4 +1,5 @@
 import * as types from '../const/actionTypes/Post';
+import * as t from '../const/actionTypes/Comments';
 
 export function fetchPost(id) {
   return {
@@ -25,6 +26,22 @@ export function updatePost(item) {
         types.POST_UPDATE_REQUEST,
         types.POST_UPDATE_SUCCESS,
         types.POST_UPDATE_ERROR
+      ]
+    }
+  };
+}
+
+export function addComment(values) {
+  const {id, comment} = values;
+  return {
+    API_CALL: {
+      endpoint: `/post/${id}/comment`,
+      method: 'post',
+      query: {comment},
+      types: [
+        t.COMMENT_ADD_REQUEST,
+        t.COMMENT_ADD_SUCCESS,
+        t.COMMENT_ADD_ERROR
       ]
     }
   };

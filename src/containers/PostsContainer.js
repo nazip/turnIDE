@@ -9,6 +9,7 @@ const stateToProps = (state) => (
     isFetching: state.posts.isFetching,
     error: state.posts.error,
     pagination: state.posts.pagination,
+    comments: state.posts.comments,
     adding: state.posts.adding
   }
 );

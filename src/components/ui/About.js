@@ -20,7 +20,7 @@ class About extends React.Component {
           email: '',
           message: ''
         },
-        errors: {
+        errors: { 
           fullName: false,
           email: false,
           message: false

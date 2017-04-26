@@ -5,7 +5,9 @@ const initialState = {
   isUpdating: false,
   error: false,
   entry: null,
-  editing: false
+  comments: [],
+  editing: false,
+  addComment: false
 };
 
 export default function post(state = initialState, action) {
@@ -18,6 +20,8 @@ export default function post(state = initialState, action) {
       return Object.assign({}, initialState, {error: true});
     case type.POST_EDIT_TOGGLE:
       return Object.assign({}, state, {editing: !state.editing});
+    case type.POST_ADD_COMMENT_TOGGLE:
+      return Object.assign({}, state, {addComment: !state.addComment});
     case type.POST_UPDATE_REQUEST:
       return Object.assign({}, initialState, {isUpdating: true});
     case type.POST_UPDATE_SUCCESS:
