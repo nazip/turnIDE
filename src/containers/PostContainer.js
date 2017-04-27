@@ -9,7 +9,8 @@ const stateToProps = (state) => (
     isFetching: state.post.fetching,
     error: state.post.error,
     editing: state.post.editing,
-    addComment: state.post.addComment
+    addComment: state.post.addComment,
+    comments: state.post.comments
   }
 );
 

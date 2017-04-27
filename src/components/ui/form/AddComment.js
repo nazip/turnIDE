@@ -8,7 +8,7 @@ const AddComment = ({ handleSubmit, pristine, submitting, reset }) => (
     <Field label="comment" component={renderField} name="comment" type="text"/>
     {(!pristine && !submitting) &&
       <button className="ui button" onClick={reset}>Clear</button>}
-    <input className="ui button primary" type="submit" value="Update"/>
+    <input className="ui button primary" type="submit" value="Save"/>
   </form>
 );
 

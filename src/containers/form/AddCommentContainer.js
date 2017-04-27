@@ -2,6 +2,8 @@ import { reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 import AddComment from 'components/ui/form/AddComment';
 import { addComment } from 'components/redux/actions/Post';
+import { POST_ADD_COMMENT_TOGGLE } from
+  'components/redux/const/actionTypes/Post';
 
 const validate = (values) => {
   const errors = {};
@@ -29,8 +31,10 @@ const stateToProps = (state) => (
   }
 );
 
-const onSubmit = (post, dispatch) => (
-   dispatch(addComment(post))
+const onSubmit = (values, dispatch) => (
+   dispatch(addComment(values)).then(
+     dispatch({type: POST_ADD_COMMENT_TOGGLE})
+   )
 );
 
 export default connect(

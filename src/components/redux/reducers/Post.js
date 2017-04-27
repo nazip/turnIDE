@@ -1,4 +1,5 @@
 import * as type from '../const/actionTypes/Post';
+import { COMMENT_ADD_SUCCESS } from '../const/actionTypes/Comments';
 
 const initialState = {
   isFetching: false,
@@ -15,7 +16,8 @@ export default function post(state = initialState, action) {
     case type.POST_FETCH_REQUEST:
       return Object.assign({}, initialState, {isFetching: true});
     case type.POST_FETCH_SUCCESS:
-      return Object.assign({}, initialState, {entry: action.response});
+      return Object.assign({}, initialState, {entry: action.response},
+      {comments: action.response.comment});
     case type.POST_FETCH_ERROR:
       return Object.assign({}, initialState, {error: true});
     case type.POST_EDIT_TOGGLE:
@@ -28,6 +30,8 @@ export default function post(state = initialState, action) {
       return Object.assign({}, initialState, {entry: action.response});
     case type.POST_UPDATE_ERROR:
       return Object.assign({}, state, {error: true});
+    case COMMENT_ADD_SUCCESS:
+      return Object.assign({}, state, {comments: action.response});
     default:
       return state;
   }
