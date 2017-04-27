@@ -5,7 +5,6 @@ import MetaData from 'components/ui/MetaData';
 import { Header, Grid, Divider } from 'semantic-ui-react';
 import Link from 'components/elements/Link';
 import LikeContainer from 'containers/LikeContainer';
-import CommentsContainer from 'containers/CommentsContainer';
 
 const BlogItem = ({linkToBlog,
   item: {image, metadata, id, txt}}) => (
@@ -17,7 +16,6 @@ const BlogItem = ({linkToBlog,
           </Header>
           <MetaData metadata={metadata} />
           <LikeContainer id={id}/>
-          <CommentsContainer id={id}/>
         </Grid.Column>
         <Grid.Column>
           <Img img={image} />

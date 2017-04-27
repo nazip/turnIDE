@@ -7,12 +7,15 @@ import Helmet from 'react-helmet';
 import { Button } from 'semantic-ui-react';
 import EditBlogContainer from 'containers/form/EditBlogContainer';
 import AddCommentContainer from 'containers/form/AddCommentContainer';
+import CommentForPostContainer from 'containers/CommentForPostContainer';
 
 const Post = ({item, editing, addComment, editClick, addCommentClick}) => {
   if (item)
     return <div>
             <ToHome/>
             <BlogItem item={item}/>
+
+            <CommentForPostContainer id={item.id}/>
 
             <Button icon={editing ? 'cancel' : 'edit'} onClick={editClick}
             label={editing ? 'Cancel' : 'Edit Post'}/>

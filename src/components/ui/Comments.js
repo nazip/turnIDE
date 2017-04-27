@@ -3,18 +3,17 @@ import PropTypes from 'prop-types';
 import Comment from 'components/ui/Comment';
 
 const Comments = ({ comments, id }) => {
-  if (!`${comments(id)}`) return null;
-  const a = comments(id);
+  const commentsArray = Array.isArray(comments) ? comments : comments(id);
   return <div>
-          {a.map((comment) =>
+          {commentsArray.map((comment) =>
             <Comment key={comment.id} comment={comment.comment}/>)
           }
          </div>;
 };
 
 Comments.propTypes = {
-  comments: PropTypes.func,
-  id: PropTypes.number
+  id: PropTypes.number,
+  comments: PropTypes.oneOfType([PropTypes.array, PropTypes.func]),
 };
 
 export default Comments;
