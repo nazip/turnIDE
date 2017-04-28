@@ -7,7 +7,7 @@ const Like = ({id, like, likeHandler}) => (
     content='Like'
     icon='heart'
     label={{ as: 'a', basic: true,
-      content: `${like instanceof Object ? like(id) : like}` || 0 }}
+      content: like || 0 }}
     labelPosition='right'
     onClick={() => likeHandler(id)}
   />

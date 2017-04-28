@@ -9,7 +9,7 @@ import EditBlogContainer from 'containers/form/EditBlogContainer';
 import AddCommentContainer from 'containers/form/AddCommentContainer';
 import CommentForPostContainer from 'containers/CommentForPostContainer';
 
-const Post = ({item, editing, addComment, editClick, addCommentClick}) => {
+const PostView = ({item, editing, addComment, editClick, addCommentClick}) => {
   if (item)
     return <div>
             <ToHome/>
@@ -32,11 +32,11 @@ const Post = ({item, editing, addComment, editClick, addCommentClick}) => {
 };
 
 
-Post.propTypes = {
+PostView.propTypes = {
   item: PropTypes.object,
   editing: PropTypes.bool,
   editClick: PropTypes.func,
   addComment: PropTypes.bool,
   addCommentClick: PropTypes.func
 };
-export default Post;
+export default PostView;

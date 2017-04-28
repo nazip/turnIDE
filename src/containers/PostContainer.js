@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import Post from 'components/views/Post';
+import PostView from 'components/views/PostView';
 import { incLike } from 'components/redux/actions/Like';
 import * as type from 'components/redux/const/actionTypes/Post';
 
@@ -22,4 +22,4 @@ const actionToProps = (dispatch) => (
   }
 );
 
-export default connect(stateToProps, actionToProps)(Post);
+export default connect(stateToProps, actionToProps)(PostView);

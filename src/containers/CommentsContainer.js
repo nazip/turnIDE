@@ -1,10 +1,10 @@
 import { connect } from 'react-redux';
 import Comments from 'components/ui/Comments';
+import _ from 'lodash';
 
-const stateToProps = (state) => (
+const stateToProps = (state, ownProps) => (
   {
-    comments: (id) => state.posts.comments.filter(
-                 (comment) => (comment.post_id == id))
+    comments: _.filter(state.posts.comments, { postId:  ownProps.id })
   }
 );
 
