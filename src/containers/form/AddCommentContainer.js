@@ -26,7 +26,8 @@ const stateToProps = (state) => (
   {
     initialValues: {
       id: state.post.entry.id,
-      comment: ''
+      comment: '',
+      phone: ''
     }
   }
 );
