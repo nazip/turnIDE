@@ -11,8 +11,10 @@ const BlogItem = ({linkToBlog,
   <Grid columns={2} divided>
       <Grid.Row>
         <Grid.Column>
-          <Header size='medium'><Link to={linkToBlog}>
-            {txt}</Link>
+          <Header size='medium'>
+            <Link to={linkToBlog}>
+              {txt}
+            </Link>
           </Header>
           <MetaData metadata={metadata} />
           <LikeContainer id={id}/>

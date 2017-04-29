@@ -18,7 +18,7 @@ export default  {
   },
 
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.js$/,
         exclude: /node_modules/,
@@ -26,23 +26,34 @@ export default  {
       },
       {
         test: [/\.scss$/, /\.css$/],
-        loaders: ["style-loader", "css-loader", "sass-loader"]
+        use: [
+          "style-loader",
+          "css-loader",
+          "sass-loader"
+        ]
       },
       {
         test: /\.(jpe?g|png|gif|svg)$/i,
-        loaders: [
-            'file?hash=sha512&digest=hex&name=[hash].[ext]',
-            'image-webpack?bypassOnDebug&optipng: {optimizationLevel=7}&gifsicle: {interlaced=false}'
+        use: [
+          "file-loader?hash=sha512&digest=hex&name=[hash].[ext]",
+          "image-webpack-loader?bypassOnDebug&optipng: {optimizationLevel=7}&gifsicle: {interlaced=false}"
         ]
       },
       { test: /\.(png|woff|woff2|eot|ttf|svg)$/,
-        loaders: ['url-loader?limit=100000']
+        use: [
+          {
+            loader: 'url-loader?limit=100000'
+          }
+        ]
       }
     ]
   },
 
   resolve: {
-    root: root
+    modules: [
+     path.join(__dirname, "src"),
+     "node_modules"
+    ]
   },
 
   plugins: [
