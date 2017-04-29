@@ -32,12 +32,12 @@ export function updatePost(item) {
 }
 
 export function addComment(values) {
-  const {id, comment} = values;
+  const {id, comment, phone} = values;
   return {
     API_CALL: {
       endpoint: `/post/${id}/comment`,
       method: 'post',
-      query: {comment},
+      query: {comment, phone},
       types: [
         t.COMMENT_ADD_REQUEST,
         t.COMMENT_ADD_SUCCESS,

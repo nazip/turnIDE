@@ -5,7 +5,9 @@ import Comment from 'components/ui/Comment';
 const Comments = ({ comments }) => (
   <div>
     {comments.map((comment) =>
-      <Comment key={comment.id} comment={comment.comment}/>)
+      <Comment key={comment.id}
+               comment={comment.comment}
+               phone={comment.phone}/>)
     }
   </div>
 );
