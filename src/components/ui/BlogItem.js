@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Img from 'components/elements/Img';
 import MetaData from 'components/ui/MetaData';
-import { Header, Grid, Divider } from 'semantic-ui-react';
+import { Header, Grid } from 'semantic-ui-react';
 import Link from 'components/elements/Link';
 import LikeContainer from 'containers/LikeContainer';
 
@@ -21,7 +21,6 @@ const BlogItem = ({linkToBlog,
           <Img img={image} />
         </Grid.Column>
       </Grid.Row>
-      <Divider/>
   </Grid>
 );
 
