@@ -8,7 +8,8 @@ const initialState = {
   entry: null,
   comments: [],
   editing: false,
-  addComment: false
+  addComment: false,
+  uploadFile: {}
 };
 
 export default function post(state = initialState, action) {
@@ -32,6 +33,9 @@ export default function post(state = initialState, action) {
       return Object.assign({}, state, {error: true});
     case COMMENT_ADD_SUCCESS:
       return Object.assign({}, state, {comments: action.response});
+    case type.POST_FILE_UPLOAD:
+      return Object.assign({}, state,
+        {uploadFile: action.acceptFile[0]});
     default:
       return state;
   }

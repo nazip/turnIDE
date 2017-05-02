@@ -25,7 +25,8 @@ const stateToProps = (state) => (
     initialValues: {
       id: state.post.entry.id,
       title: state.post.entry.txt,
-      author: state.post.entry.metadata.author
+      author: state.post.entry.metadata.author,
+      img: state.post.uploadFile
     }
   }
 );
