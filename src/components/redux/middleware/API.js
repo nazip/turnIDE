@@ -3,13 +3,23 @@ import { assign, pick } from 'lodash/object';
 import { stringify } from 'qs';
 import  API_ROOT  from 'components/const/StaticData';
 
-function APICall({ endpoint, method, query, payload }) {
+function APICall({ endpoint, method, query, payload, attachment = false }) {
   return new Promise((resolve, reject) => {
     let r = request[method.toLowerCase()](`${API_ROOT}${endpoint}`);
+    // if ((attachment) && (method.toLowerCase() == 'post') || 
+    //    (method.toLowerCase() == 'put')) {
+    //   const formData = new FormData();
+    //   formData.append(payload.key, payload.file);
+    //   r = r.send(formData);
+    // }
     if (query)
       r.query(stringify(query));
-    if (payload)
-      r = r.send(payload);
+    if (payload) {
+      const formData = new FormData();
+      formData.append(payload.key, payload.file);
+      r = r.send(formData);
+      // r = r.send(payload);
+    }
     r.end((error, data) => (
       error ?
         reject(error)

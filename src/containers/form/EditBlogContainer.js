@@ -26,15 +26,15 @@ const stateToProps = (state) => (
       id: state.post.entry.id,
       title: state.post.entry.txt,
       author: state.post.entry.metadata.author,
-      img: state.post.uploadFile
+      uploadFile: state.form.EditBlog ? state.form.EditBlog.values.uploadFile :
+      undefined
     }
   }
 );
 
-const onSubmit = (post, dispatch) => {
-  dispatch(updatePost(post));
+const onSubmit = (values, dispatch) => {
+  dispatch(updatePost(values));
 };
-
 
 export default connect(
   stateToProps

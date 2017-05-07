@@ -9,14 +9,14 @@ const UploadFile = ({onDrop, uploadFile}) => (
               onDrop={onDrop}>
       <p>Drop files here.</p>
     </Dropzone>
-    {uploadFile.preview &&
-      <Img img={{src: uploadFile.preview, width: 200, height: 200 }}/>}
+    {uploadFile &&
+      <Img img={{src: uploadFile[0].preview, width: 200, height: 200 }}/>}
   </div>
 );
 
 UploadFile.propTypes = {
   onDrop: PropTypes.func,
-  uploadFile: PropTypes.object
+  uploadFile: PropTypes.array
 };
 
 

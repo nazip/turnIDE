@@ -8,8 +8,8 @@ const initialState = {
   entry: null,
   comments: [],
   editing: false,
-  addComment: false,
-  uploadFile: {}
+  addComment: false
+  // uploadFile: []
 };
 
 export default function post(state = initialState, action) {
@@ -26,16 +26,15 @@ export default function post(state = initialState, action) {
     case type.POST_ADD_COMMENT_TOGGLE:
       return Object.assign({}, state, {addComment: !state.addComment});
     case type.POST_UPDATE_REQUEST:
-      return Object.assign({}, initialState, {isUpdating: true});
+      return Object.assign({}, state, {isUpdating: true});
     case type.POST_UPDATE_SUCCESS:
       return Object.assign({}, initialState, {entry: action.response});
     case type.POST_UPDATE_ERROR:
       return Object.assign({}, state, {error: true});
     case COMMENT_ADD_SUCCESS:
       return Object.assign({}, state, {comments: action.response});
-    case type.POST_FILE_UPLOAD:
-      return Object.assign({}, state,
-        {uploadFile: action.acceptFile[0]});
+    // case type.POST_FILE_UPLOAD:
+    //   return Object.assign({}, state, {uploadFile: action.acceptFile});
     default:
       return state;
   }

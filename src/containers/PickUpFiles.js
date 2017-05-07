@@ -4,14 +4,14 @@ import { POST_FILE_UPLOAD } from 'components/redux/const/actionTypes/Post';
 
 const stateToProps = (state) => (
   {
-    uploadFile: state.post.uploadFile
+    uploadFile: state.form.EditBlog.values.uploadFile
   }
 );
 
 const actionToProps = (dispatch) => (
   {
     onDrop:
-      (acceptFile) => dispatch({type: POST_FILE_UPLOAD, acceptFile})
+       (acceptFile) => dispatch({type: POST_FILE_UPLOAD, acceptFile})
   }
 );
 

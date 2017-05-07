@@ -8,7 +8,7 @@ const EditBlog = ({ handleSubmit, pristine, submitting, reset }) => (
   <form className="ui form" onSubmit={handleSubmit}>
     <Field label="title" component={renderField} name="title" type="text"/>
     <Field label="author" component={renderField} name="author" type="text"/>
-    <PickUpFiles/>
+    <Field component={PickUpFiles} name="files"/>
     {(!pristine && !submitting) &&
       <button className="ui button" onClick={reset}>Clear</button>}
     <input className="ui button primary" type="submit" value="Update"/>

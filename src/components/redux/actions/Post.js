@@ -22,6 +22,8 @@ export function updatePost(item) {
       endpoint: `/post/${item.id}.json`,
       method: 'put',
       query: {item},
+      payload: {key: 'file', file: item.uploadFile[0]},
+      // attachment: {key: 'file', file: item.uploadFile[0]},
       types: [
         types.POST_UPDATE_REQUEST,
         types.POST_UPDATE_SUCCESS,
