@@ -25,9 +25,7 @@ const stateToProps = (state) => (
     initialValues: {
       id: state.post.entry.id,
       title: state.post.entry.txt,
-      author: state.post.entry.metadata.author,
-      uploadFile: state.form.EditBlog ? state.form.EditBlog.values.uploadFile :
-      undefined
+      author: state.post.entry.metadata.author
     }
   }
 );
