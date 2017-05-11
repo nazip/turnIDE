@@ -5,7 +5,7 @@ import {POST_FETCH_SUCCESS} from '../const/actionTypes/Post';
 const initialState = {
   isFetching: false,
   error: false,
-  likes: [],
+  likes: []
 };
 
 const getLikes = (entries) => (

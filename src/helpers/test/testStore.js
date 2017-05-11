@@ -1,8 +1,8 @@
-export const testStore = (state, ownProps) => {
-  return {
+export const testStore = (state) => (
+  {
     default: () => {},
     subscribe: () => {},
     dispatch: () => {},
     getState: () =>  state
-  };
-};
+  }
+);

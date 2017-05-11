@@ -1,21 +1,12 @@
-import Posts from '../Posts';
+import { fetchPosts } from 'components/redux/actions/Posts';
+import  createStore  from 'components/redux/store';
 
-// describe('Post reducer', () => {
-//   it('fetch Posts', () => {
-//     expect(Posts(['sample quote 1'], {
-//       type: 'FETCH_QUOTES_SUCCESS',
-//       data: ['sample quote 2', 'sample quote 3'],
-//     })).toEqual([
-//       'sample quote 1',
-//       'sample quote 2',
-//       'sample quote 3',
-//     ]);
-//   });
-//
-//   it('returns same state for unknown action', () => {
-//     expect(quotes(
-//       ['sample quote 1'],
-//       { type: 'UNKNOWN_ACTION' }
-//     )).toEqual(['sample quote 1']);
-//   })
-// });
+describe('Posts reducer', () => {
+  const store = createStore();
+
+  it('fetch Posts', () => {
+    expect.assertions(1);
+    return store.dispatch(fetchPosts())
+    .then((data) =>  expect(data.entries.length > 0).toEqual(true));
+  });
+});
