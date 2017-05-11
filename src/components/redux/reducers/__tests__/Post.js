@@ -1,40 +1,55 @@
-import { fetchPost, addComment } from 'components/redux/actions/Post';
-import  createStore  from 'components/redux/store';
-import _ from 'lodash';
-import { incLike } from 'components/redux/actions/Like';
+import post from '../Post';
+import * as type from '../../const/actionTypes/Post';
+import { COMMENT_ADD_SUCCESS } from
+'components/redux/const/actionTypes/Comments';
 
 describe('Post reducer', () => {
-  const store = createStore();
-  const comment = {
-    id: 1,
-    postId: 1,
-    comment: 'test comment' ,
-    phone: '123-321'
+  const initialState = {
+    isFetching: false,
+    isUpdating: false,
+    error: false,
+    entry: null,
+    comments: [],
+    editing: false,
+    addComment: false
   };
 
-  beforeEach(() => {
-    store.dispatch(fetchPost(1));
+  const entry = {
+    isFetching: false,
+    isUpdating: false,
+    error: false,
+    entry: {
+      image: {},
+      metadata: {},
+      comment: [],
+      txt: 'test',
+      id: 1
+    },
+    comments: [],
+    editing: false,
+    addComment: false
+  };
+
+  it('returns proper initial state', () => {
+    expect(post(undefined, {})).toEqual(initialState);
   });
 
-  it('fetch Post', () => {
-    expect(store.getState().post.entry).toBeDefined();
-  });
-
-  it('fetch Post without error', () => {
-    expect(store.getState().post.error).toEqual(false);
+  it('update post', () => {
+    expect(post(undefined, {
+      type: type.POST_UPDATE_SUCCESS,
+      response: entry.entry
+    })).toEqual(entry);
   });
 
   it('add comment', () => {
-    expect.assertions(1);
-    return store.dispatch(addComment(comment))
-    .then((data) => expect(
-      _.findIndex(data, (a) => a.comment == comment.comment)).not.toEqual(-1));
-  });
-
-  it('add like', () => {
-    expect.assertions(1);
-    const prevLike = store.getState().likes.likes[0].like;
-    return store.dispatch(incLike(1))
-    .then((data) => expect(data.metadata.like).toEqual(prevLike + 1));
+    expect(post(undefined, {
+      type: COMMENT_ADD_SUCCESS,
+      response: {
+        id: 1,
+        postId: 1,
+        phone: '321-123',
+        comment: 'test comment'
+      }
+    })).not.toEqual(entry.comment);
   });
 });
