@@ -18,10 +18,12 @@ const PostView = ({item, editing, addComment, editClick, addCommentClick}) => {
             <CommentForPostContainer id={item.id}/>
 
             <Button icon={editing ? 'cancel' : 'edit'} onClick={editClick}
+            className={editing ? 'cancelEdit' : 'postEdit'}
             label={editing ? 'Cancel' : 'Edit Post'}/>
             {!editing || <EditBlogContainer/>}
 
             <Button icon={addComment ? 'cancel' : 'add'}
+            className={addComment ? 'cancelComment' : 'addComment'}
             onClick={addCommentClick}
             label={addComment ? 'Cancel' : 'Add Comment'}/>
             {!addComment || <AddCommentContainer/>}

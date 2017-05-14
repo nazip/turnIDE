@@ -5,7 +5,9 @@ import PropTypes from 'prop-types';
 
 const MetaData = ({metadata: {author, createdAt, updatedAt}}) => (
   <div className={'metadata'}>
-    <div><Label>Автор:<TextBox>{author}</TextBox></Label></div>
+    <div>
+      <Label className='author'>Автор:<TextBox>{author}</TextBox></Label>
+    </div>
     <div><Label>createdAt:<TextBox>{createdAt}</TextBox></Label></div>
     <div><Label>updatedAt:<TextBox>{updatedAt}</TextBox></Label></div>
   </div>

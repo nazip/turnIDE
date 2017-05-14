@@ -17,12 +17,14 @@ export function fetchPost(id) {
 }
 
 export function updatePost(item) {
+  const {id, uploadFile} = item;
   return {
     API_CALL: {
-      endpoint: `/post/${item.id}.json`,
+      endpoint: `/post/${id}.json`,
       method: 'put',
       query: {item},
-      attachment: {key: 'file', file: item.uploadFile[0]},
+      attachment: uploadFile == undefined ? false :
+                  {key: 'file', file: uploadFile[0]},
       types: [
         types.POST_UPDATE_REQUEST,
         types.POST_UPDATE_SUCCESS,

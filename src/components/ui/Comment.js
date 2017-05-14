@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { Label } from 'semantic-ui-react';
 
 const Comment = ({ id, comment, phone }) => (
-  <div id={id}>
+  <div id={id} className='comment'>
     <TextBox>{comment}</TextBox>
     <Label>{phone}</Label>
   </div>

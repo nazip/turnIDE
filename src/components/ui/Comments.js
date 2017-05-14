@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Comment from 'components/ui/Comment';
 
 const Comments = ({ comments }) => (
-  <div>
+  <div className='comments'>
     {comments.map((comment) =>
       <Comment key={comment.id}
                comment={comment.comment}
