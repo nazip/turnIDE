@@ -5,7 +5,7 @@ describe('Comment for Post', () => {
 
   var nightmare;
 
-  beforeEach( function*() {
+  beforeEach( function() {
     nightmare = nightmare();
     yield nightmare
     .goto('http://localhost:3001')
