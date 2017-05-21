@@ -2,6 +2,7 @@
 import path from 'path';
 import webpack from 'webpack';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
+import ExtractTextPlugin from 'extract-text-webpack-plugin';
 
 const root = path.join(process.cwd(), 'src');
 
@@ -9,10 +10,7 @@ export default  {
   devtool: 'source-map',
 
   entry: {
-    // bundle: './src/index.js'
-    // bundle: './dist/bundle.js'
-    bundle: '../server/index.js'
-    // bundle: path.join(process.cwd(), 'dist', '/assets/', 'bundle.js')
+    bundle: './index.js'
   },
 
   output: {
@@ -29,12 +27,19 @@ export default  {
       },
       {
         test: [/\.scss$/, /\.css$/],
-        use: [
-          'style-loader',
-          'css-loader',
-          'sass-loader'
-        ]
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: ['css-loader', 'sass-loader']
+        })
       },
+      // {
+      //   test: [/\.scss$/, /\.css$/],
+      //   use: [
+      //     'style-loader',
+      //     'css-loader',
+      //     'sass-loader'
+      //   ]
+      // },
       {
         test: /\.(jpe?g|png|gif|svg)$/i,
         use: [
@@ -67,6 +72,8 @@ export default  {
       __DEVELOPMENT__: false,
       'process.env.NODE_ENV': 'production'
     }),
+    new ExtractTextPlugin('[name].[chunkhash].css'),
+    new webpack.ContextReplacementPlugin(/moment[\\\/]locale$/, /^\.\/(en|ru)$/),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
       minChunks(module) {

@@ -7,6 +7,7 @@ import prepareData from 'helpers/PrepareData';
 import createStore  from 'components/redux/store';
 import { compact } from 'lodash/array';
 import Helmet from 'react-helmet';
+import webpackAsset from './webpackAsset';
 
 const store = createStore();
 
@@ -29,7 +30,7 @@ export default (req,res) => {
 
         const head = Helmet.rewind();
         res.status(200);
-        res.render('index', { initialState, content, head });
+        res.render('index', { initialState, content, head, webpackAsset });
       })
       .catch(() => res.send('Data not found'));
     } else {

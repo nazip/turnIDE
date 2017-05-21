@@ -3,7 +3,7 @@ const path = require('path');
 require('app-module-path').addPath(path.join(process.cwd(), 'src'));
 require('./globals');
 require('babel-core/register');
-require.extensions['.css'] = () => {
+require.extensions['.css'] = () => {   // eslint-disable-line
   return;
 };
 
