@@ -19,24 +19,27 @@ application.use(express.static('node_modules/semantic-ui/examples'));
 application.set('views', __dirname);
 application.set('view engine', 'ejs');
 
-const webpack = require('webpack');
-const config = require('../../webpack.config.js').default;
-const compiler = webpack(config);
+if (__DEVELOPMENT__) { // eslint-disable-line
+  const webpack = require('webpack');
+  const config = require('../../webpack.config.js').default;
+  const compiler = webpack(config);
 
-const webpackDev = require('webpack-dev-middleware');
-const webpackHot = require('webpack-hot-middleware');
+  const webpackDev = require('webpack-dev-middleware');
+  const webpackHot = require('webpack-hot-middleware');
 
-application.use(
-  webpackDev(
-    compiler,
-    {
-      hot: true,
-      publicPath: config.output.publicPath,
-      stats: { color: true }
-    }
-  )
-);
-application.use(webpackHot(compiler));
+  application.use(
+    webpackDev(
+      compiler,
+      {
+        hot: true,
+        publicPath: config.output.publicPath,
+        stats: { color: true }
+      }
+    )
+  );
+  application.use(webpackHot(compiler));
+}
+
 application.get('*', require('./render').default);
 application.listen(port,
-  function() {console.log(`Server started (port ${port})`);});
+  function() {console.log(`Server started (port ${port})`);}); // eslint-disable-line
