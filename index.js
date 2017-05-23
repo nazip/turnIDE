@@ -1,4 +1,4 @@
-// import './main.scss'; // attach foundation
+import './src/static/css/main.css';
 import './node_modules/semantic-ui/dist/semantic.min.css';
 
 import React from 'react';

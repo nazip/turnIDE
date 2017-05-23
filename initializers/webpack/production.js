@@ -32,6 +32,14 @@ export default  {
           use: ['css-loader', 'sass-loader']
         })
       },
+      // {
+      //   test: [/\.scss$/, /\.css$/],
+      //   use: [
+      //     "style-loader",
+      //     "css-loader",
+      //     "sass-loader"
+      //   ]
+      // },
       {
         test: /\.(jpe?g|png|gif|svg)$/i,
         use: [
@@ -62,7 +70,7 @@ export default  {
       __SERVER__: false,
       __CLIENT__:  true,
       __DEVELOPMENT__: false,
-      'process.env.NODE_ENV': 'production'
+      'process.env.NODE_ENV': JSON.stringify('production')
     }),
     new ExtractTextPlugin('[name].[chunkhash].css'),
     new webpack.ContextReplacementPlugin(/moment[\\\/]locale$/, /^\.\/(en|ru)$/),
