@@ -21,7 +21,7 @@ application.set('view engine', 'ejs');
 
 if (__DEVELOPMENT__) { // eslint-disable-line
   const webpack = require('webpack');
-  const config = require('../../webpack.config.js').default;
+  const config = require('../webpack/development.js').default;
   const compiler = webpack(config);
 
   const webpackDev = require('webpack-dev-middleware');

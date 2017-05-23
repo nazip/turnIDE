@@ -32,14 +32,6 @@ export default  {
           use: ['css-loader', 'sass-loader']
         })
       },
-      // {
-      //   test: [/\.scss$/, /\.css$/],
-      //   use: [
-      //     'style-loader',
-      //     'css-loader',
-      //     'sass-loader'
-      //   ]
-      // },
       {
         test: /\.(jpe?g|png|gif|svg)$/i,
         use: [
