@@ -11,7 +11,9 @@ const port = 3001;
 
 const express = require('express');
 const application = express();
+const morgan = require('morgan');
 
+application.use(morgan('combined'));
 application.use(express.static('src/static'));
 application.use(express.static('src/static/img'));
 application.use(express.static('node_modules/semantic-ui/examples'));
