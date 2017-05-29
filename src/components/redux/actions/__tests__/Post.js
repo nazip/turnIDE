@@ -1,6 +1,6 @@
 import { fetchPost, addComment } from '../Post';
 import  createStore  from 'components/redux/store';
-import _ from 'lodash';
+import findIndex from 'lodash/findIndex';
 
 describe('Post action', () => {
   const store = createStore();
@@ -27,6 +27,6 @@ describe('Post action', () => {
     expect.assertions(1);
     return store.dispatch(addComment(comment))
     .then((data) => expect(
-      _.findIndex(data, (a) => a.comment == comment.comment)).not.toEqual(-1));
+      findIndex(data, (a) => a.comment == comment.comment)).not.toEqual(-1));
   });
 });

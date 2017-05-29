@@ -1,11 +1,11 @@
 import { connect } from 'react-redux';
 import Chart from 'components/elements/Chart';
-import _ from 'lodash';
+import findIndex from 'lodash/findIndex';
 
 const dataForChart = (items, likes) => (
   items.map((item) => (
     [item.metadata.author || 'not defined',
-      likes[_.findIndex(likes, (like) => like.id == item.id)].like]
+      likes[findIndex(likes, (like) => like.id == item.id)].like]
   ))
 );
 const stateToProps = (state) => (

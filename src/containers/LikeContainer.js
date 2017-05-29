@@ -1,15 +1,15 @@
 import { connect } from 'react-redux';
 import Like from 'components/ui/Like';
 import { incLike } from 'components/redux/actions/Like';
-import _ from 'lodash';
+import filter from 'lodash/filter';
 
 const stateToProps = (state, ownProps) => (
   {
     likes: state.likes.likes,
     isFetching: state.likes.isFetching,
     error: state.likes.error,
-    like: _.filter(state.likes.likes, {id: ownProps.id}).length == 0 ? 0 :
-      _.filter(state.likes.likes, {id: ownProps.id})[0].like
+    like: filter(state.likes.likes, {id: ownProps.id}).length == 0 ? 0 :
+      filter(state.likes.likes, {id: ownProps.id})[0].like
   }
 );
 
