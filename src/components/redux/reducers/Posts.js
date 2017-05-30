@@ -1,5 +1,5 @@
 import * as type from '../const/actionTypes/Posts';
-import _ from 'lodash';
+import pick from 'lodash/pick';
 
 const initialState = {
   isFetching: false,
@@ -18,7 +18,7 @@ const initialState = {
 const getEntries = (entries) => (
   entries.map((entry) =>
     Object.assign({}, {image: entry.image}, {txt: entry.txt}, {id: entry.id},
-    {metadata: _.pick(entry.metadata, 'author', 'updatedAt', 'createdAt')}))
+    {metadata: pick(entry.metadata, 'author', 'updatedAt', 'createdAt')}))
 );
 
 export default function post(state = initialState, action) {
