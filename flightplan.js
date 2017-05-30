@@ -12,7 +12,7 @@ plan.target('production', {
 plan.local(function(local) {
   local.log('copy files to remote host');
   const filesToCopy = local.exec('git ls-files', {silent: true});
-  local.transfer(filesToCopy, '/tmp/', tempDir);
+  local.transfer(filesToCopy, `/tmp/${tempDir}`);
 });
 
 plan.remote(function(remote) {
@@ -24,12 +24,16 @@ plan.remote(function(remote) {
   remote.log('install dependencies');
   remote.exec(`npm --prefix ~/${tempDir} install ~/${tempDir}`);
 
-  remote.log('Buid');
-  remote.exec(`cd ~/${tempDir}/semantic && gulp build`);
-  remote.exec(`npm --prefix ~/${tempDir} run build`);
+  // remote.log('Buid');
+  // remote.exec(`cd ~/${tempDir}/semantic && gulp build`);
+  // remote.exec(`npm --prefix ~/${tempDir} run build`);
 
   remote.log('Reload application');
   remote.exec(`ln -snf ~/${tempDir} ~/current`);
+
+  remote.log('install semantic');
+  remote.exec('(cd ~/current && npm install semantic-ui-react --save)');
+
   remote.exec('(cd ~/current && pm2 restart pm2.config.js --env production)');
 
   remote.log('Finish');
