@@ -1,4 +1,5 @@
 /node_modules/*
 /dist/bundle.js
-/semantic/*  
+/semantic/*
 /src/static/assets/*
+webpack-manifest.json
