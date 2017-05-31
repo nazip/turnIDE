@@ -3,6 +3,7 @@ import path from 'path';
 import webpack from 'webpack';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
+var OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 const root = path.join(process.cwd(), 'src');
 
@@ -65,6 +66,12 @@ export default  {
       'process.env.NODE_ENV': JSON.stringify('production')
     }),
     new ExtractTextPlugin('[name].[chunkhash].css'),
+    new OptimizeCssAssetsPlugin({
+      assetNameRegExp: /\.css$/g,
+      cssProcessor: require('cssnano'),
+      cssProcessorOptions: { discardComments: {removeAll: true } },
+      canPrint: true
+    }),
     new webpack.ContextReplacementPlugin(/moment[\\\/]locale$/, /^\.\/(en|ru)$/),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
