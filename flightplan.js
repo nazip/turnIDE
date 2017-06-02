@@ -1,4 +1,5 @@
 const plan = require('flightplan');
+const fs = require('fs-extra')
 
 const tempDir = `blog-client${new Date().getTime()}`;
 const user = 'nazip';
@@ -10,6 +11,8 @@ plan.target('production', {
 });
 
 plan.local(function(local) {
+  local.log('run Tests');
+  local.exec('node ./node_modules/jest/bin/jest.js --config jest.config.json');
   local.log('copy files to remote host');
   const filesToCopy = local.exec('git ls-files', {silent: true});
   local.transfer(filesToCopy, `/tmp/${tempDir}`);
