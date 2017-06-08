@@ -8,7 +8,9 @@
     "prod-start": "NODE_ENV=production node ./initializers/server/index.js",
     "dev-start": "NODE_ENV=development node ./initializers/server/index.js",
     "dev": "nodemon --exec babel-node -- ./index.js --history-api-fallback",
-    "test": "jest --config jest.config.json"
+    "test": "jest --config jest.config.json",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "author": "",
   "license": "ISC",
@@ -95,7 +97,8 @@
     "url-loader": "^0.5.7",
     "webpack": "^2.4.1",
     "webpack-bundle-analyzer": "^2.8.2",
-    "webpack-dev-server": "^1.16.2"
+    "webpack-dev-server": "^1.16.2",
+    "@storybook/react": "^3.0.1"
   },
   "jest": {
     "testEnvironment": "node"
